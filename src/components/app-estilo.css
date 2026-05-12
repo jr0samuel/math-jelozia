@@ -1,0 +1,70 @@
+.head-conteiner, .jelozia {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+.conteiner{
+  border: solid 2px;
+  padding: 30px;
+  margin-top: 20px;
+}
+.paragrafo{
+  max-width: 650px;
+  margin-bottom: 30px;
+}
+.f{
+  width: 70px;
+  margin-left: 15px;
+  margin-top: 7px;
+  color: var(--text);
+  font-size: 18px;
+  padding: 5px 11px;
+  border: var(--shadow) 1px solid;
+  outline: inherit;
+}
+.fator1 {font-size: 105%;}
+#f2{ margin-bottom: 15px; }
+.btn{
+  padding: 10px 0;
+  width: 140px;
+  color: var(--text);
+  background-color: var(--accent-bg);
+  outline: var(--shadow) solid 1px;
+}
+.btn:active, .btn:focus{
+  background-color: var(--accent-border);
+  outline: wheat solid 1px;
+}
+@media (hover: hover){
+  .btn:hover {
+    background-color: var(--accent-border);
+    outline: wheat 1px solid;
+  }
+}
+.clicou{
+  transform: scale(0.95);
+  background-color: var(--accent-border);
+  border: 3px solid wheat;
+}
+.grupo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+}
+.grupos{
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+}
+.instrucao{
+  width: 220px;
+  border: solid 1px var(--accent-border);
+  padding: 10px;
+}
+@media screen and (max-width:298px){
+  .fator2{font-size: 105%;}
+  .f { margin-right: 15px; }
+}
