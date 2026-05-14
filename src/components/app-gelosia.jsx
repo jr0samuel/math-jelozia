@@ -156,19 +156,21 @@ export function Gelosia () {
                       );
                   })}
               </div>
-              <div className="grupos">
-                <div className='grupo'>
+              <div className="grupos botoes">
+                <div className='grupo fim'>
                   <Botao onClick={() => setTravado(true)}
-                    className={`${travado ? 'ativo' : ''}`}>
+                    className={`${travado ? 'ativo' : ''}`}
+                  >
                     Finalizar Questão
                   </Botao>
                   <p className="instrucaoUm instrucao">
                             Ao clicar em "Finalizar Questão", não será mais possível digitar na gelosia.
                         </p>
                 </div>
-                <div className="grupo">
+                <div className="grupo volta">
                   <Botao onClick={() => setTravado(false)}
-                    className={`${!travado ? 'ativo' : ''}`}>
+                    className={`${!travado ? 'ativo' : ''}`}
+                  >
                     Voltar para Questão
                   </Botao>
                   <p className="instrucaoDois instrucao">

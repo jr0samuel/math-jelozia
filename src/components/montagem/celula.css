@@ -5,10 +5,13 @@
     gap: 20px;
     padding: 20px;
     min-height: 100vh;
+    width: fit-content;
+    box-sizing: border-box;
+    overflow-x: auto;
 }
 .jelozia{
   display: grid;
-  margin: 20px 10px;
+  margin: 0 auto;
 }
 .celula{
     width: 100px;

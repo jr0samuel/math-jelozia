@@ -1,4 +1,4 @@
-.head-conteiner, .jelozia {
+.head-conteiner {
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -30,22 +30,24 @@
   width: 140px;
   color: var(--text);
   background-color: var(--accent-bg);
-  outline: var(--shadow) solid 1px;
+  border: none;
+  outline: none;
 }
-.btn:active, .btn:focus{
-  background-color: var(--accent-border);
-  outline: wheat solid 1px;
+.btn:focus{
+  outline: var(--accent) 3px solid;
 }
 @media (hover: hover){
-  .btn:hover {
-    background-color: var(--accent-border);
-    outline: wheat 1px solid;
+  .btn:hover:not(:active){
+    outline: none;
+    border: none;
   }
 }
+.botoes{
+  user-select: none;
+}
 .clicou{
-  transform: scale(0.95);
-  background-color: var(--accent-border);
-  border: 3px solid wheat;
+  transform: scale(0.9);
+  outline: 3px solid var(--accent);
 }
 .grupo{
   display: flex;
@@ -54,10 +56,8 @@
   justify-content: space-around;
   gap: 1rem;
 }
-.grupos{
-  display: flex;
-  justify-content: space-around;
-  gap: 2rem;
+.volta{
+  margin-top: 1rem;
 }
 .instrucao{
   width: 220px;
