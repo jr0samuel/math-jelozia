@@ -15,6 +15,7 @@ export function handleKeyDown (e) {
     e.preventDefault();
   }
 };
+
 export function handleChange (e, linha, coluna, posicao, onChangeCaixa) {
   const apenasNumeros = e.target.value.replace(/\D/g, "");
   onChangeCaixa(linha, coluna, posicao, apenasNumeros);

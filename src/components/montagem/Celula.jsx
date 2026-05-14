@@ -1,13 +1,11 @@
 import React from "react";
 import "./celula.css";
-import { handleKeyDown, handleChange } from "./celula.js";
+import { handleChange, handleKeyDown } from "./celula.js";
 
-export function Celula({ tipo, linha, coluna, valores, onChangeCaixa, travado }) {
+export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado }) {
     const pegarValor = (posicao) => valores[`${linha}-${coluna}-${posicao}`] || "";
-    
     const propsInput = (posicaoClasse, posicaoNome) => {
         const identificadorUnico = `caixa-${linha}-${coluna}-${posicaoNome}`;
-
         return {
             type: "text",
             className: `caixa ${posicaoClasse} ${travado ? 'travado' : ''}`,
@@ -20,15 +18,12 @@ export function Celula({ tipo, linha, coluna, valores, onChangeCaixa, travado })
             "aria-label": `Caixa ${posicaoNome} na linha ${linha} e coluna ${coluna}`,
         };
     };
-
     if(tipo === "esquina"){
         return (
             <div className="celula esquina">
-                <div>
-                    #######
-                    #######
-                    #######
-                </div>
+                <div>#######
+                  #######
+                #######</div>
             </div>
         );
     };

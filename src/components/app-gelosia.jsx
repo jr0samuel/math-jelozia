@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 import "./app-estilo.css";
 
+import './montagem/celula.css';
 import { Celula } from './montagem/Celula.jsx';
 import { apenasNumero } from "./montagem/celula.js";
 import { Botao } from "./global/usandoBotoes.jsx";
-import './montagem/celula.css';
 
 export function Gelosia () {
     const [inputColunas, setInputColunas] = useState();
@@ -33,79 +33,30 @@ export function Gelosia () {
     const tipoCelula = (linhaIndex, colunaIndex) => {
       const c = colunaIndex + 1;
       const l = linhaIndex + 1;
-    
-        if(l === 1 && c === 1 || l === 1 && c === f1_2 || l === f2_2 && c === 1 || l === f2_2 && c === f1_2){
-          return "esquina";
-        };
-        if(l === 1 && c > 1 && c < f1_2 || l > 1 && l < f2_2 && c === f1_2 || l > 1 && l < f2_2 && c === 1 || l === f2_2 && c > 1 && c < f1_2){
-          return "borda";
-        };
-        if(f2_2 === 3 && f1_2 === 3 && (l === 2 && c > 1 && c < f1_2)){
-          return "3";
-        };
-        if(f2_2 === 3 && f1_2 >= 4 && (l === 2 && c > 1 && c < (f1_2 - 1))){
-          return "5";
-        };
-        if(f2_2 === 3 && f1_2 > 3 && (l === 2 && c === (f1_2 - 1))){
-          return "3";
-        };
-        if(f2_2 === 4 && f1_2 === 3 && (l === 2 && c > 1 && c < f1_2)){
-          return "5";
-        };
-        if(f2_2 === 4 && f1_2 === 3 && (l > 2 && l < f2_2 && c > 1 && c < f1_2)){
-          return "3";
-        };
-        if(f2_2 === 4 && f1_2 === 4 && (l > 2 && l < f2_2 && c > 1 && c < f1_2)){
-          return "3";
-        };
-        if(f2_2 === 4 && f1_2 === 4 && (l === 2 && c > 1 && c < f1_2)){
-          return "5";
-        };
-        if(f2_2 > 4 && f1_2 > 4 && l === 2 && c === (f1_2 - 1)){
-          return "4";
-        };
-        if(f2_2 > 4 && f1_2 > 4 && l === 2 && c > 1 && c < (f1_2 - 1)){
-          return "5";
-        };
-        if((f2_2 > 4 && f2_2 < 6) && f1_2 > 4 && l > 2 && l < f2_2 && c > 1 && c < f1_2){
-          return "3";
-        };
-        if(f2_2 === 4 && f1_2 >= 5 && l === 3 && c > 1 && c < f1_2){
-          return "3";
-        };
-        if(f2_2 === 4 && f1_2 >= 5 && l === 2 && c > 1 && c < f1_2){
-          return "5";
-        };
-        if(f2_2 === 5 && f1_2 === 4 && l > 2 && l < f2_2 && c > 1 && c < f1_2){
-          return "3";
-        };
-        if(f2_2 === 5 && f1_2 === 4 && l === 2 && c === 2){
-          return "5";
-        };
-        if(f2_2 === 5 && f1_2 === 4 && l === 2 && c === (f1_2 - 1)){
-          return "4";
-        };
-        if(f2_2 === 5 && f1_2 === 3 && l === 2 && c === (f1_2 - 1)){
-          return "4";
-        };
-        if(f2_2 === 5 && f1_2 === 3 && l > 2 && l < f2_2 && c === (f1_2 - 1)){
-          return "3";
-        };
-        if(f2_2 >= 6 && (f1_2 >= 5 || f1_2 === 3 || f1_2 === 4) && l > 2 && l < (f2_2 - 2) && c === (f1_2 - 1)){
-          return "6";
-        };
-        if(f2_2 >= 6 && (f1_2 >= 5 || f1_2 === 3 || f1_2 === 4) && l > 2 && l < f2_2 && c > 1 && c < (f1_2 - 1)){
-          return "3";
-        };
-        if(f2_2 >= 6 && (f1_2 >= 5 || f1_2 === 3 || f1_2 === 4) && l > (f2_2 - 3) && l < f2_2 && c === (f1_2 - 1)){
-          return "3";
-        };
-        if(f2_2 >= 6 && f1_2 === 4 && l === 2 && c === 2){
-          return "5";
-        };
-        if(f2_2 >= 6 && (f1_2 === 3 || f1_2 === 4) && l === 2 && c === (f1_2 - 1)){
-          return "4";
-        };
+        if(l === 1 && c === 1 || l === 1 && c === f1_2 || l === f2_2 && c === 1 || l === f2_2 && c === f1_2) return "esquina";
+        if(l === 1 && c > 1 && c < f1_2 || l > 1 && l < f2_2 && c === f1_2 || l > 1 && l < f2_2 && c === 1 || l === f2_2 && c > 1 && c < f1_2) return "borda";
+        if(f2_2 === 3 && f1_2 === 3 && (l === 2 && c > 1 && c < f1_2)) return "3";
+        if(f2_2 === 3 && f1_2 >= 4 && (l === 2 && c > 1 && c < (f1_2 - 1))) return "5";
+        if(f2_2 === 3 && f1_2 > 3 && (l === 2 && c === (f1_2 - 1))) return "3";
+        if(f2_2 === 4 && f1_2 === 3 && (l === 2 && c > 1 && c < f1_2)) return "5";
+        if(f2_2 === 4 && f1_2 === 3 && (l > 2 && l < f2_2 && c > 1 && c < f1_2)) return "3";
+        if(f2_2 === 4 && f1_2 === 4 && (l > 2 && l < f2_2 && c > 1 && c < f1_2)) return "3";
+        if(f2_2 === 4 && f1_2 === 4 && (l === 2 && c > 1 && c < f1_2)) return "5";
+        if(f2_2 > 4 && f1_2 > 4 && l === 2 && c === (f1_2 - 1)) return "4";
+        if(f2_2 > 4 && f1_2 > 4 && l === 2 && c > 1 && c < (f1_2 - 1)) return "5";
+        if((f2_2 > 4 && f2_2 < 6) && f1_2 > 4 && l > 2 && l < f2_2 && c > 1 && c < f1_2) return "3";
+        if(f2_2 === 4 && f1_2 >= 5 && l === 3 && c > 1 && c < f1_2) return "3";
+        if(f2_2 === 4 && f1_2 >= 5 && l === 2 && c > 1 && c < f1_2) return "5";
+        if(f2_2 === 5 && f1_2 === 4 && l > 2 && l < f2_2 && c > 1 && c < f1_2) return "3";
+        if(f2_2 === 5 && f1_2 === 4 && l === 2 && c === 2) return "5";
+        if(f2_2 === 5 && f1_2 === 4 && l === 2 && c === (f1_2 - 1)) return "4";
+        if(f2_2 === 5 && f1_2 === 3 && l === 2 && c === (f1_2 - 1)) return "4";
+        if(f2_2 === 5 && f1_2 === 3 && l > 2 && l < f2_2 && c === (f1_2 - 1)) return "3";
+        if(f2_2 >= 6 && (f1_2 >= 5 || f1_2 === 3 || f1_2 === 4) && l > 2 && l < (f2_2 - 2) && c === (f1_2 - 1)) return "6";
+        if(f2_2 >= 6 && (f1_2 >= 5 || f1_2 === 3 || f1_2 === 4) && l > 2 && l < f2_2 && c > 1 && c < (f1_2 - 1)) return "3";
+        if(f2_2 >= 6 && (f1_2 >= 5 || f1_2 === 3 || f1_2 === 4) && l > (f2_2 - 3) && l < f2_2 && c === (f1_2 - 1)) return "3";
+        if(f2_2 >= 6 && f1_2 === 4 && l === 2 && c === 2) return "5";
+        if(f2_2 >= 6 && (f1_2 === 3 || f1_2 === 4) && l === 2 && c === (f1_2 - 1)) return "4";
         return "3";
     };
     
@@ -164,8 +115,8 @@ export function Gelosia () {
                     Finalizar Questão
                   </Botao>
                   <p className="instrucaoUm instrucao">
-                            Ao clicar em "Finalizar Questão", não será mais possível digitar na gelosia.
-                        </p>
+                      Ao clicar em "Finalizar Questão", não será mais possível digitar na gelosia.
+                  </p>
                 </div>
                 <div className="grupo volta">
                   <Botao onClick={() => setTravado(false)}
@@ -174,8 +125,8 @@ export function Gelosia () {
                     Voltar para Questão
                   </Botao>
                   <p className="instrucaoDois instrucao">
-                            Ao clicar em "Voltar para Questão", será possível digitar novamente.
-                        </p>
+                      Ao clicar em "Voltar para Questão", será possível digitar novamente.
+                  </p>
                 </div>
               </div>
             </div>
