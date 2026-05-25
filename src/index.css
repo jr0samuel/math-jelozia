@@ -52,6 +52,13 @@
 
 body {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  overflow: auto;
+  width: fit-content;
+  box-sizing: border-box;
 }
 
 #root {
