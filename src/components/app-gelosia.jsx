@@ -31,10 +31,17 @@ export function Gelosia () {
     };
     
     const tipoCelula = (linhaIndex, colunaIndex) => {
-      const c = colunaIndex + 1;
-      const l = linhaIndex + 1;
-        if(l === 1 && c === 1 || l === 1 && c === f1_2 || l === f2_2 && c === 1 || l === f2_2 && c === f1_2) return "esquina";
-        if(l === 1 && c > 1 && c < f1_2 || l > 1 && l < f2_2 && c === f1_2 || l > 1 && l < f2_2 && c === 1 || l === f2_2 && c > 1 && c < f1_2) return "borda";
+      let c = colunaIndex + 1;
+      let l = linhaIndex + 1;
+        let topo = l === 1;
+        let base = l === f2_2;
+        let esq = c === 1;
+        let dir = c === f1_2;
+        if ((topo || base) && (esq || dir)) return "esquina";
+        if (topo) return "borda-sup";
+        if (base) return "borda-inf";
+        if (esq) return "borda-esq";
+        if (dir) return "borda-dir";
         if(f2_2 === 3 && f1_2 === 3 && (l === 2 && c > 1 && c < f1_2)) return "3";
         if(f2_2 === 3 && f1_2 >= 4 && (l === 2 && c > 1 && c < (f1_2 - 1))) return "5";
         if(f2_2 === 3 && f1_2 > 3 && (l === 2 && c === (f1_2 - 1))) return "3";
