@@ -12,6 +12,7 @@
 .paragrafo{
   max-width: 650px;
   margin-bottom: 30px;
+  user-select: none;
 }
 .f{
   width: 70px;
@@ -42,7 +43,7 @@
     border: none;
   }
 }
-.botoes{
+.botoes, span{
   user-select: none;
 }
 .clicou{

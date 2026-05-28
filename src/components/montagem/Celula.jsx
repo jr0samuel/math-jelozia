@@ -57,20 +57,20 @@ export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado }
     if(tipo === "5"){
         return (
             <div className={`celula ${tipo}`}>
-                <input {...propsInput("superior-esquerdo-3", "sup-esq-3")} />
+                <input {...propsInput("superior-esquerdo-baixo-3", "sup-esq-b-3")} />
+                <input {...propsInput("superior-esquerdo-cima-3", "sup-esq-c-3")} />
                 <div className="barra"></div>
-                <input {...propsInput("inferior-direito-baixo-3", "inf-dir-b-3")} />
-                <input {...propsInput("inferior-direito-cima-3", "inf-dir-c-3")} />
+                <input {...propsInput("inferior-direito-3", "inf-dir-3")} />
             </div>
         );
     }
     if(tipo === "6"){
         return (
             <div className={`celula ${tipo}`}>
-                <input {...propsInput("superior-esquerdo-baixo-3a", "sup-esq-b-3a")} />
-                <input {...propsInput("superior-esquerdo-cima-3a", "sup-esq-c-3a")} />
+                <input {...propsInput("superior-esquerdo-3a", "sup-esq-3a")} />
                 <div className="barra"></div>
-                <input {...propsInput("inferior-direito-3a", "inf-dir-3a")} />
+                <input {...propsInput("inferior-direito-baixo-3a", "inf-dir-b-3a")} />
+                <input {...propsInput("inferior-direito-cima-3a", "inf-dir-c-3a")} />
             </div>
         );
     }

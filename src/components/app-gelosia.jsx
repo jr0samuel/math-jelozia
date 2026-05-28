@@ -18,6 +18,7 @@ export function Gelosia () {
         setF1_2(inputColunas + 2);
         setF2_2(inputLinhas + 2);
         setValoresCaixas({});
+        setTravado(false);
       } else {
         setF1_2(0);
         setF2_2(0);
@@ -79,11 +80,11 @@ export function Gelosia () {
                 (inclua as casas decimais, por exemplo, 10.2, digite 3)
               </p>
               <label className="fator fator1">
-              Primeiro Fator:<input className="f" id="f1" onKeyDown={apenasNumero} value={inputColunas || ""} onChange={e => setInputColunas(Number(e.target.value))} />
+              <span>Primeiro Fator:</span><input className="f" id="f1" onKeyDown={apenasNumero} value={inputColunas || ""} onChange={e => setInputColunas(Number(e.target.value))} />
               </label>
               <br/><br/>
               <label className="fator fator2">
-              Segundo Fator:<input className="f" id="f2" onKeyDown={apenasNumero} value={inputLinhas || ""} onChange={e => setInputLinhas(Number(e.target.value))} />
+              <span>Segundo Fator:</span><input className="f" id="f2" onKeyDown={apenasNumero} value={inputLinhas || ""} onChange={e => setInputLinhas(Number(e.target.value))} />
               </label>
               <br /><br />
               <div className="botoes">

@@ -46,7 +46,7 @@
     width: 16px;
     height: 28px;
     border: solid 1px var(--accent);
-    position: relative;
+    position: absolute;
     z-index: 2;
     background-color: inherit;
     outline: inherit;
@@ -72,52 +72,52 @@
     border: 1px solid red;
 }
 .caixa.superior-esquerdo-2{
-    top: 20px;
-    left: 30px;
+    top: 10px;
+    left: 20px;
 }
 .caixa.inferior-direito-2{
-    bottom: 20px;
-    right: 35px;
+    bottom: 10px;
+    right: 20px;
 }
 .caixa.superior-esquerdo-baixo-4{
     top: 30px;
-    left: 35px;
+    left: 10px;
 }
 .caixa.superior-esquerdo-cima-4{
-    top: 0px;
-    left: 45px;
+    top: 5px;
+    left: 35px;
 }
 .caixa.inferior-direito-baixo-4{
-    bottom: 10px;
-    right: 40px;
-}
-.caixa.inferior-direito-cima-4{
-    bottom: 30px;
+    bottom: 5px;
     right: 35px;
 }
-.caixa.superior-esquerdo-3{
-    top: 20px;
-    left: 45px;
+.caixa.inferior-direito-cima-4{
+    bottom: 35px;
+    right: 5px;
 }
-.caixa.inferior-direito-baixo-3{
-    bottom: 10px;
-    right: 30px;
-}
-.caixa.inferior-direito-cima-3{
-    bottom: 30px;
-    right: 25px;
-}
-.caixa.superior-esquerdo-baixo-3a{
+.caixa.superior-esquerdo-baixo-3{
     top: 30px;
-    left: 28px;
+    left: 10px;
 }
-.caixa.superior-esquerdo-cima-3a{
-    top: 0px;
-    left: 33px;
+.caixa.superior-esquerdo-cima-3{
+    top: 5px;
+    left: 35px;
 }
-.caixa.inferior-direito-3a{
-    bottom: 20px;
-    right: 45px;
+.caixa.inferior-direito-3{
+    bottom: 10px;
+    right: 20px;
+}
+.caixa.superior-esquerdo-3a{
+    top: 10px;
+    left: 18px;
+}
+.caixa.inferior-direito-baixo-3a{
+    bottom: 5px;
+    right: 35px;
+}
+.caixa.inferior-direito-cima-3a{
+    bottom: 35px;
+    right: 5px;
 }
 .travado{
     cursor: default;
