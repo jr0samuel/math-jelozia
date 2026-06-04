@@ -21,8 +21,7 @@
   color: var(--text);
   font-size: 18px;
   padding: 5px 11px;
-  border: var(--shadow) 1px solid;
-  outline: inherit;
+  outline: 1px solid var(--shadow);
 }
 .fator1 {font-size: 105%;}
 #f2{ margin-bottom: 15px; }
@@ -34,7 +33,7 @@
   border: none;
   outline: none;
 }
-.btn:focus{
+.btn:focus, .btn:hover{
   outline: var(--accent) 3px solid;
 }
 @media (hover: hover){

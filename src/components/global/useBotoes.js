@@ -18,7 +18,10 @@ export function useBotoes(callback){
         if(callback)callback();
         if(e.type === "touchend" && e.cancelable) e.preventDefault();
     };
-    const handleCancel = () => setClicou(false);
+    const handleCancel = (e) => {
+        setClicou(false);
+        e.target.blur();
+    }
 
     return{
         clicou,

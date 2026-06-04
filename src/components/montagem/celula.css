@@ -45,7 +45,7 @@
 .caixa{
     width: 16px;
     height: 28px;
-    border: solid 1px var(--accent);
+    border: solid 2px var(--accent);
     position: absolute;
     z-index: 2;
     background-color: inherit;
@@ -60,16 +60,16 @@
     font-size: 22px;
 }
 .borda-sup > input{
-    border: 1px solid blue;
+    border: 2px solid blue;
 }
 .borda-inf > input{
-    border: 1px solid green;
+    border: 2px solid green;
 }
 .borda-esq > input{
-    border: 1px solid green;
+    border: 2px solid green;
 }
 .borda-dir > input{
-    border: 1px solid red;
+    border: 2px solid red;
 }
 .caixa.superior-esquerdo-2{
     top: 10px;
