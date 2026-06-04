@@ -33,7 +33,7 @@
   border: none;
   outline: none;
 }
-.btn:focus, .btn:hover{
+.btn:focus{
   outline: var(--accent) 3px solid;
 }
 @media (hover: hover){
