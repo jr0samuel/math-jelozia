@@ -32,7 +32,7 @@ export function useBotoes(callback){
             onMouseUp: handleUp,
             onTouchStart: handleDown,
             onTouchEnd: handleUp,
-            onMouseLeave: handleCancel,
+            // onMouseLeave: handleCancel,
             onTouchCancel: handleCancel,
             onBlur: handleCancel,
             onContextMenu: e => e.preventDefault()
