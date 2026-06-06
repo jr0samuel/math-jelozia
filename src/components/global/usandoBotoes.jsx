@@ -1,10 +1,10 @@
 import { useBotoes } from "./useBotoes.js";
 
-export const Botao = ({onClick, children, className = ""}) => {
+export const Botao = ({onClick, children, className}) => {
     const {clicou, bind} = useBotoes(onClick);
     return(
         <button {...bind}
-            className={`btn ${className} ${clicou ? "clicou" : ""}`}
+            className={`btn ${className} ${clicou ? "clicou" : "nao-clicado"}`}
         >
             {children}
         </button>

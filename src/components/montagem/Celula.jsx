@@ -5,10 +5,9 @@ import { handleChange, handleKeyDown } from "./celula.js";
 export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado }) {
     const pegarValor = (posicao) => valores[`${linha}-${coluna}-${posicao}`] || "";
     const propsInput = (posicaoClasse, posicaoNome) => {
-        const identificadorUnico = `caixa-${linha}-${coluna}-${posicaoNome}`;
+        const identificadorUnico = `caixa-linha-${linha}-coluna-${coluna}-posição-${posicaoNome}`;
         return {
-            type: "text",
-            className: `caixa ${posicaoClasse} ${travado ? 'travado' : ''}`,
+            className: `caixa ${posicaoClasse} ${travado ? 'travado' : 'nao-travado'}`,
             value: pegarValor(posicaoNome) || "",
             onKeyDown: handleKeyDown,
             onChange: (e) => handleChange(e, linha, coluna, posicaoNome, onChangeCaixa),
@@ -30,7 +29,7 @@ export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado }
     if(tipo.startsWith("borda")){
         return (
             <div className={`celula ${tipo}`}>
-                <input {...propsInput("centro")} />
+                <input {...propsInput("centro", "central-valor-unico")} />
             </div>
         );
     };

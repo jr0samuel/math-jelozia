@@ -25,6 +25,7 @@
     color: var(--accent);
     letter-spacing: 1px;
     font-size: 21px;
+    user-select: none;
 }
 .barra{
     position: absolute;

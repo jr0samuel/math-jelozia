@@ -32,6 +32,7 @@
   background-color: var(--accent-bg);
   border: none;
   outline: none;
+  cursor: pointer;
 }
 .btn:focus{
   outline: var(--accent) 3px solid;

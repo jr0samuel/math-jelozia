@@ -59,6 +59,10 @@ body {
   overflow: auto;
   width: fit-content;
   box-sizing: border-box;
+  &::selection{
+    color: black;
+    background-color: var(--text);
+  }
 }
 
 #root {

@@ -13,18 +13,15 @@ export function Gelosia () {
     const [f1_2, setF1_2] = useState(0);
     const [f2_2, setF2_2] = useState(0);
     const [valoresCaixas, setValoresCaixas] = useState({});
+    const [travado, setTravado] = useState(false);
     const gerarGrid = () => {
       if (inputColunas > 0 && inputLinhas > 0) {
         setF1_2(inputColunas + 2);
         setF2_2(inputLinhas + 2);
         setValoresCaixas({});
         setTravado(false);
-      } else {
-        setF1_2(0);
-        setF2_2(0);
       }
     };
-    const [travado, setTravado] = useState(false);
 
     const handleCaixa = (linha, coluna, posicaoCaixa, novoValor) => {
       const chaveUnica = `${linha}-${coluna}-${posicaoCaixa}`;
@@ -103,7 +100,7 @@ export function Gelosia () {
                       const linhaIndex = Math.floor(index / f1_2);
                       const colunaIndex = index % f1_2;
                       const tipo = tipoCelula(linhaIndex, colunaIndex);
-    
+
                       return ( <Celula key={`${linhaIndex}-${colunaIndex}`}
                           tipo={tipo}
                           linha={linhaIndex}
@@ -118,7 +115,7 @@ export function Gelosia () {
               <div className="grupos botoes">
                 <div className='grupo fim'>
                   <Botao onClick={() => setTravado(true)}
-                    className={`${travado ? 'ativo' : ''}`}
+                    className={`${travado ? 'travado-ativo' : 'travado-nao-ativo'}`}
                   >
                     Finalizar Questão
                   </Botao>
@@ -128,7 +125,7 @@ export function Gelosia () {
                 </div>
                 <div className="grupo volta">
                   <Botao onClick={() => setTravado(false)}
-                    className={`${!travado ? 'ativo' : ''}`}
+                    className={`${!travado ? 'travado-nao-ativo' : 'travado-ativo'}`}
                   >
                     Voltar para Questão
                   </Botao>
