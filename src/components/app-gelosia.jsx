@@ -14,12 +14,16 @@ export function Gelosia () {
     const [f2_2, setF2_2] = useState(0);
     const [valoresCaixas, setValoresCaixas] = useState({});
     const [travado, setTravado] = useState(false);
+
     const gerarGrid = () => {
       if (inputColunas > 0 && inputLinhas > 0) {
         setF1_2(inputColunas + 2);
         setF2_2(inputLinhas + 2);
         setValoresCaixas({});
         setTravado(false);
+      } else {
+        setF1_2(0);
+        setF2_2(0);
       }
     };
 
