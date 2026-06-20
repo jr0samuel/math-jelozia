@@ -16,14 +16,27 @@ export function Gelosia () {
     const [travado, setTravado] = useState(false);
 
     const gerarGrid = () => {
-      if (inputColunas > 0 && inputLinhas > 0) {
-        setF1_2(inputColunas + 2);
-        setF2_2(inputLinhas + 2);
-        setValoresCaixas({});
+      const fator1 = String(inputColunas || "");
+      const fator2 = String(inputLinhas || "");
+      if (fator1.length > 0 && fator2.length > 0) {
+        const colunasTotal = fator1.length + 2;
+        const linhasTotal = fator2.length + 2;
+        setF1_2(colunasTotal);
+        setF2_2(linhasTotal);
         setTravado(false);
+        const novosValores = {};
+        fator1.split("").forEach((digito, index) => {
+          novosValores[`0-${index + 1}-central-valor-unico`] = digito;
+        });
+        const ultimaColunaIndex = colunasTotal - 1;
+        fator2.split("").forEach((digito, index) => {
+          novosValores[`${index + 1}-${ultimaColunaIndex}-central-valor-unico`] = digito;
+        });
+        setValoresCaixas(novosValores);
       } else {
         setF1_2(0);
         setF2_2(0);
+        setValoresCaixas({});
       }
     };
 
@@ -76,16 +89,14 @@ export function Gelosia () {
           <header className="head-conteiner">
             <div className="conteiner">
               <p className="paragrafo">
-                Digite a quantidade de casas numéricas dos dois fatores para fazer a Gelosia, por exemplo, 258 vezes 19, digite 3 no Primeiro Fator e 2 no Segundo Fator
-                <br/>
-                (inclua as casas decimais, por exemplo, 10.2, digite 3)
+                Digite a conta que você fazer na Gelosia, se tiver decimal, não digite a vírgula, porque a Gelosia não usa vírgula
               </p>
               <label className="fator fator1">
-              <span>Primeiro Fator:</span><input className="f" id="f1" onKeyDown={apenasNumero} value={inputColunas || ""} onChange={e => setInputColunas(Number(e.target.value))} />
+              <span>Primeiro Fator:</span><input className="f" id="f1" onKeyDown={apenasNumero} value={inputColunas || ""} onChange={e => setInputColunas(e.target.value)} />
               </label>
               <br/><br/>
               <label className="fator fator2">
-              <span>Segundo Fator:</span><input className="f" id="f2" onKeyDown={apenasNumero} value={inputLinhas || ""} onChange={e => setInputLinhas(Number(e.target.value))} />
+              <span>Segundo Fator:</span><input className="f" id="f2" onKeyDown={apenasNumero} value={inputLinhas || ""} onChange={e => setInputLinhas(e.target.value)} />
               </label>
               <br /><br />
               <div className="botoes">
