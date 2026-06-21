@@ -89,7 +89,7 @@ export function Gelosia () {
           <header className="head-conteiner">
             <div className="conteiner">
               <p className="paragrafo">
-                Digite a conta que você fazer na Gelosia, se tiver decimal, não digite a vírgula, porque a Gelosia não usa vírgula
+                Digite a conta que você quer fazer na Gelosia, se tiver decimal, não digite a vírgula, porque a Gelosia não usa vírgula
               </p>
               <label className="fator fator1">
               <span>Primeiro Fator:</span><input className="f" id="f1" onKeyDown={apenasNumero} value={inputColunas || ""} onChange={e => setInputColunas(e.target.value)} />
