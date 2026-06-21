@@ -10,10 +10,11 @@
   margin-top: 20px;
 }
 .paragrafo{
-  max-width: 650px;
   margin-bottom: 30px;
   user-select: none;
 }
+.paragrafo-um{ max-width: 650px; }
+.paragrafo-dois{ max-width: 530px; }
 .f{
   width: 70px;
   margin-left: 15px;
