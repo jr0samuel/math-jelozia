@@ -1,13 +1,23 @@
 import './App.css';
 
-import { Gelosia } from './components/app-gelosia.jsx';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { GelosiaUm } from './components/app-gelosia-um.jsx';
+import { GelosiaDois } from './components/app-gelosia-dois.jsx';
 
 export default function App() {
 
   return (
 
     <>
-      <Gelosia />
+
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<GelosiaUm />} />
+          <Route path="/versao-dois" element={<GelosiaDois />} />
+        </Routes>
+      </BrowserRouter>
+
     </>
 
   );

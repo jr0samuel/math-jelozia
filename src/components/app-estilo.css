@@ -69,3 +69,7 @@
   .fator2{font-size: 105%;}
   .f { margin-right: 15px; }
 }
+.link-versao{
+  margin-bottom: 10px;
+  user-select: none;
+}
