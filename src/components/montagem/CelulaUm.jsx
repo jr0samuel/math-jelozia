@@ -2,7 +2,7 @@ import React from "react";
 import "./celula-um.css";
 import { handleChange, handleKeyDown } from "./celula.js";
 
-export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado }) {
+export function CelulaUm ({ tipo, linha, coluna, valores, onChangeCaixa, travado }) {
     const pegarValor = (posicao) => valores[`${linha}-${coluna}-${posicao}`] || "";
     const propsInput = (posicaoClasse, posicaoNome) => {
         const identificadorUnico = `caixa-linha-${linha}-coluna-${coluna}-posição-${posicaoNome}`;
