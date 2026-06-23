@@ -1,5 +1,5 @@
 import React from "react";
-import "./celula.css";
+import "./celula-um.css";
 import { handleChange, handleKeyDown } from "./celula.js";
 
 export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado }) {
