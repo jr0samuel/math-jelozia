@@ -62,15 +62,17 @@
 }
 .borda-sup > input{
     border: 2px solid blue;
+    cursor: default;
 }
-.borda-inf > input{
-    border: 2px solid green;
+.borda-dir > input{
+    border: 2px solid red;
+    cursor: default;
 }
 .borda-esq > input{
     border: 2px solid green;
 }
-.borda-dir > input{
-    border: 2px solid red;
+.borda-inf > input{
+    border: 2px solid green;
 }
 .caixa.superior-esquerdo-2{
     top: 10px;

@@ -11,7 +11,7 @@ export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado }
             value: pegarValor(posicaoNome) || "",
             onKeyDown: handleKeyDown,
             onChange: (e) => handleChange(e, linha, coluna, posicaoNome, onChangeCaixa),
-            readOnly: travado,
+            readOnly: travado || ["borda-sup", "borda-dir"].includes(tipo),
             id: identificadorUnico,
             name: identificadorUnico,
             "aria-label": `Caixa ${posicaoNome} na linha ${linha} e coluna ${coluna}`,
