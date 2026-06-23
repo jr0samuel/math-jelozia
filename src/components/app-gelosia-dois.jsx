@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import "./app-estilo.css";
 
-import './montagem/celula.css';
-import { Celula } from './montagem/Celula.jsx';
+import './montagem/celula-dois.css';
+import { CelulaDois } from './montagem/CelulaDois.jsx';
 import { apenasNumero } from "./montagem/celula.js";
 import { Botao } from "./global/usandoBotoes.jsx";
 import { Link } from 'react-router-dom';

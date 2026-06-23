@@ -1,0 +1,127 @@
+.app-jelozia{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    min-height: 100vh;
+}
+.jelozia{
+  display: grid;
+  margin: 0 auto;
+}
+.celula{
+    width: 100px;
+    height: 100px;
+    border: solid 1px var(--accent);
+    cursor: default;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.celula.esquina{
+    color: var(--accent);
+    letter-spacing: 1px;
+    font-size: 21px;
+    user-select: none;
+}
+.barra{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 141.42%;
+    height: 2px;
+    background-color: var(--accent);
+    transform-origin: bottom left;
+    transform: rotate(-45deg);
+    z-index: 1;
+}
+.caixa-container{
+    position: absolute;
+    display: flex;
+    gap: 4px;
+}
+.caixa{
+    width: 16px;
+    height: 28px;
+    border: solid 2px var(--accent);
+    position: absolute;
+    z-index: 2;
+    background-color: inherit;
+    outline: inherit;
+    color: var(--text);
+    text-align: center;
+    font-size: 18px;
+}
+.centro{
+    width: 26px;
+    height: 32px;
+    font-size: 22px;
+}
+.borda-sup > input{
+    border: 2px solid blue;
+    cursor: default;
+}
+.borda-dir > input{
+    border: 2px solid red;
+    cursor: default;
+}
+.borda-esq > input{
+    border: 2px solid green;
+}
+.borda-inf > input{
+    border: 2px solid green;
+}
+.caixa.superior-esquerdo-2{
+    top: 10px;
+    left: 20px;
+}
+.caixa.inferior-direito-2{
+    bottom: 10px;
+    right: 20px;
+}
+.caixa.superior-esquerdo-baixo-4{
+    top: 30px;
+    left: 10px;
+}
+.caixa.superior-esquerdo-cima-4{
+    top: 5px;
+    left: 35px;
+}
+.caixa.inferior-direito-baixo-4{
+    bottom: 5px;
+    right: 35px;
+}
+.caixa.inferior-direito-cima-4{
+    bottom: 35px;
+    right: 5px;
+}
+.caixa.superior-esquerdo-baixo-3{
+    top: 30px;
+    left: 10px;
+}
+.caixa.superior-esquerdo-cima-3{
+    top: 5px;
+    left: 35px;
+}
+.caixa.inferior-direito-3{
+    bottom: 10px;
+    right: 20px;
+}
+.caixa.superior-esquerdo-3a{
+    top: 10px;
+    left: 18px;
+}
+.caixa.inferior-direito-baixo-3a{
+    bottom: 5px;
+    right: 35px;
+}
+.caixa.inferior-direito-cima-3a{
+    bottom: 35px;
+    right: 5px;
+}
+.travado{
+    cursor: default;
+}
