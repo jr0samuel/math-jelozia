@@ -118,7 +118,7 @@ export function GelosiaDois () {
                       const colunaIndex = index % f1_2;
                       const tipo = tipoCelula(linhaIndex, colunaIndex);
 
-                      return ( <Celula key={`${linhaIndex}-${colunaIndex}`}
+                      return ( <CelulaDois key={`${linhaIndex}-${colunaIndex}`}
                           tipo={tipo}
                           linha={linhaIndex}
                           coluna={colunaIndex}

@@ -107,7 +107,7 @@ export function GelosiaUm () {
                       const colunaIndex = index % f1_2;
                       const tipo = tipoCelula(linhaIndex, colunaIndex);
 
-                      return ( <Celula key={`${linhaIndex}-${colunaIndex}`}
+                      return ( <CelulaUm key={`${linhaIndex}-${colunaIndex}`}
                           tipo={tipo}
                           linha={linhaIndex}
                           coluna={colunaIndex}
