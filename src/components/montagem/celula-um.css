@@ -62,9 +62,11 @@
 }
 .borda-sup > input{
     border: 2px solid blue;
+    cursor: initial !important;
 }
 .borda-dir > input{
     border: 2px solid red;
+    cursor: initial !important;
 }
 .borda-esq > input{
     border: 2px solid green;
