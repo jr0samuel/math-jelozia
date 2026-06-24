@@ -15,6 +15,8 @@ export function CelulaDois ({ tipo, linha, coluna, valores, onChangeCaixa, trava
             id: identificadorUnico,
             name: identificadorUnico,
             "aria-label": `Caixa ${posicaoNome} na linha ${linha} e coluna ${coluna}`,
+            type:"text",
+            inputMode:"numeric",
             maxLength: 1
         };
     };
