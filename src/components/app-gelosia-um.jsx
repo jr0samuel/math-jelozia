@@ -76,7 +76,10 @@ export function GelosiaUm () {
         <>
           <header className="head-conteiner">
             <div className="conteiner">
-              <div className='link-versao'><Link to="/versao-dois">Outra versão da Gelosia</Link></div>
+              <div className='link-versao'>
+                <div><Link to="/versao-dois">Outra versão da Gelosia</Link></div>
+                <div><a href='/gelosia-explicada' target='_blank' rel='noreferrer'>Explicação da Gelosia</a></div>
+              </div>
               <p className="paragrafo paragrafo-um">
                 Digite a quantidade de casas numéricas dos dois fatores para fazer a Gelosia, por exemplo, 258 vezes 19, digite 3 no Primeiro Fator e 2 no Segundo Fator
                 <br/>

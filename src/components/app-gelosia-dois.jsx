@@ -89,7 +89,10 @@ export function GelosiaDois () {
         <>
           <header className="head-conteiner">
             <div className="conteiner">
-              <div className='link-versao'><Link to="/">Outra versão da Gelosia</Link></div>
+              <div className='link-versao'>
+                <div><Link to="/">Outra versão da Gelosia</Link></div>
+                <div><a href='/gelosia-explicada' target='_blank' rel='noreferrer'>Explicação da Gelosia</a></div>
+              </div>
               <p className="paragrafo paragrafo-dois">
                 Digite a conta que você quer fazer na Gelosia, se tiver decimal, não digite a vírgula, porque a Gelosia não usa vírgula
               </p>
