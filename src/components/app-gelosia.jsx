@@ -88,6 +88,9 @@ export function Gelosia () {
         <>
           <header className="head-conteiner">
             <div className="conteiner">
+              <div className='link'>
+                <div><a href='/gelosia-explicada' target='_blank' rel='noreferrer'>Explicação da Gelosia</a></div>
+              </div>
               <p className="paragrafo">
                 Digite a conta que você quer fazer na Gelosia, se tiver decimal, não digite a vírgula, porque a Gelosia não usa vírgula
               </p>

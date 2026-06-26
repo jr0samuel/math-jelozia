@@ -12,6 +12,7 @@
 .paragrafo{
   max-width: 530px;
   margin-bottom: 30px;
+  margin-top: 10px;
   user-select: none;
 }
 .f{
@@ -68,4 +69,14 @@
 @media screen and (max-width:298px){
   .fator2{font-size: 105%;}
   .f { margin-right: 15px; }
+}
+.artigo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 30px;
+}
+h4{
+  text-align: justify;
+  max-width: 555px;
 }
