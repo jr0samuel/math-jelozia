@@ -70,6 +70,9 @@
   .fator2{font-size: 105%;}
   .f { margin-right: 15px; }
 }
+.link{
+  user-select: none;
+}
 .artigo{
   display: flex;
   flex-direction: column;
