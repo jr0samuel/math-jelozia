@@ -75,6 +75,11 @@ export default function GelosiaExplicada ( ) {
                 quem monta os quadros mais rápido e quem executa o cálculo mais rápido, mas o sistema web que fiz serve para
                 não precisar montar, porque é chato montar na mão, só precisa digitar a quantidade de casas numéricas de cada
                 fator incluindo as decimais se houver, como no exemplo 146 x 10,2, digite 3 nos dois fatores.
+                <br/><br/>
+                Vou disponibilizar, no link abaixo, imagens com a gelosia em branco e em vários formatos de 1x1 até 6x6
+                para imprimir e escrever, mas também é importante montar a gelosia na mão.
+                <br/>
+                <a href="/gelosias_em_branco_de_1x1_a_6x6.zip" download="gelosias_em_branco_1x1_6x6.zip">zip das imagens</a>
             </h4>
         </div>
         </>
