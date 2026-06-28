@@ -3,8 +3,35 @@ export default function GelosiaExplicada ( ) {
         <>
         <div className="artigo">
             <h3>Explicação detalhada da Gelosia</h3>
+            <h4>
+                Comece colocando os fatores
+            </h4>
             <div>
-                <img src="/exemplo.png" alt="exemplo usado na explicação: 25 x 19"/>
+                <img src="/passo1.png" alt="exemplo usado na explicação: 25 x 19" />
+            </div>
+            <h4>
+                Multiplique os fatores entre colunas e linhas
+            </h4>
+            <div>
+                <img src="/passo2.png" alt="multiplicando os fatores - parte 1" />
+            </div>
+            <div>
+                <img src="/passo3.png" alt="multiplicando os fatores - parte 2" />
+            </div>
+            <h4>
+                Faça a soma pelas diagonais em cada diagonal
+            </h4>
+            <div>
+                <img src="/passo4.png" alt="somando pelas diagonais - parte 1" />
+            </div>
+            <h4>
+                Aqui tem aquele "vai um", que vai para a próxima diagonal
+            </h4>
+            <div>
+                <img src="/passo5.png" alt="somando pelas diagonais - parte 2" />
+            </div>
+            <div>
+                <img src="/passo6.png" alt="somando pelas diagonais - parte 3" />
             </div>
             <h4>
                 Gelosia, também conhecida como método da grade ou método da treliça para multiplicação. Antes de explicar, é
