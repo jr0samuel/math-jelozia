@@ -99,9 +99,8 @@ export default function GelosiaExplicada ( ) {
                 A Gelosia é uma ferramenta visual, artística e estética, e como diz o professor Cláudio Possani, “é elegante, é
                 bonitinho”. Esse aspecto visual facilita o aprendizado e o uso, e inspira a estudar mais, porque é animador, e a
                 melhor forma de ensinar e aprender é com ânimo, além disso, dá para fazer competição de velocidade sobre
-                quem monta os quadros mais rápido e quem executa o cálculo mais rápido, mas o sistema web que fiz serve para
-                não precisar montar, porque é chato montar na mão, só precisa digitar a quantidade de casas numéricas de cada
-                fator incluindo as decimais se houver, como no exemplo 146 x 10,2, digite 3 nos dois fatores.
+                quem monta os quadros mais rápido e quem executa o cálculo mais rápido, mas o sistema que fiz serve para
+                não precisar montar, porque é chato montar na mão, mas fica o desafio.
                 <br/><br/>
                 Vou disponibilizar, no link abaixo, imagens com a gelosia em branco e em vários formatos de 1x1 até 6x6
                 para imprimir e escrever, mas também é importante montar a gelosia na mão. Isso é interessante para professores.
