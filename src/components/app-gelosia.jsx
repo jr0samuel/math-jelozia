@@ -2,29 +2,55 @@ import React, { useState } from 'react';
 
 import "./app-estilo.css";
 
-import './montagem/celula-um.css';
-import { CelulaUm } from './montagem/CelulaUm.jsx';
-import { apenasNumero } from "./montagem/celula.js";
+import './montagem/celula-estilo.css';
+import { Celula } from './montagem/Celula.jsx';
+import { apenasNumero } from "./montagem/celula-utils.js";
 import { Botao } from "./global/usandoBotoes.jsx";
 import { Link } from 'react-router-dom';
 
-export function GelosiaUm () {
+export function Gelosia ({variant}) {
     const [inputColunas, setInputColunas] = useState();
     const [inputLinhas, setInputLinhas] = useState();
     const [f1_2, setF1_2] = useState(0);
     const [f2_2, setF2_2] = useState(0);
     const [valoresCaixas, setValoresCaixas] = useState({});
     const [travado, setTravado] = useState(false);
-
     const gerarGrid = () => {
-      if (inputColunas > 0 && inputLinhas > 0) {
-        setF1_2(inputColunas + 2);
-        setF2_2(inputLinhas + 2);
-        setValoresCaixas({});
-        setTravado(false);
+      if (variant === "um") {
+        const colunas = Number(inputColunas);
+        const linhas = Number(inputLinhas);
+        if (colunas > 0 && linhas > 0) {
+          setF1_2(colunas + 2);
+          setF2_2(linhas + 2);
+          setValoresCaixas({});
+          setTravado(false);
+        } else {
+          setF1_2(0);
+          setF2_2(0);
+        }
       } else {
-        setF1_2(0);
-        setF2_2(0);
+        const fator1 = String(inputColunas || "");
+        const fator2 = String(inputLinhas || "");
+        if (fator1.length > 0 && fator2.length > 0) {
+          const colunasTotal = fator1.length + 2;
+          const linhasTotal = fator2.length + 2;
+          setF1_2(colunasTotal);
+          setF2_2(linhasTotal);
+          setTravado(false);
+          const novosValores = {};
+          fator1.split("").forEach((digito, index) => {
+            novosValores[`0-${index + 1}-central-valor-unico`] = digito;
+          });
+          const ultimaColunaIndex = colunasTotal - 1;
+          fator2.split("").forEach((digito, index) => {
+            novosValores[`${index + 1}-${ultimaColunaIndex}-central-valor-unico`] = digito;
+          });
+          setValoresCaixas(novosValores);
+        } else {
+          setF1_2(0);
+          setF2_2(0);
+          setValoresCaixas({});
+        }
       }
     };
 
@@ -77,20 +103,23 @@ export function GelosiaUm () {
           <header className="head-conteiner">
             <div className="conteiner">
               <div className='link-versao'>
-                <div><Link to="/versao-dois">Outra versão da Gelosia</Link></div>
+                <div><Link to={variant === "um" ? "/outra-versao" : "/"}>Outra versão da Gelosia</Link></div>
                 <div><a href='/gelosia-explicada' target='_blank' rel='noreferrer'>Explicação da Gelosia</a></div>
               </div>
-              <p className="paragrafo paragrafo-um">
-                Digite a quantidade de casas numéricas dos dois fatores para fazer a Gelosia, por exemplo, 258 vezes 19, digite 3 no Primeiro Fator e 2 no Segundo Fator
-                <br/>
-                (inclua as casas decimais, por exemplo, 10.2, digite 3)
+              <p className={`paragrafo paragrafo-${variant}`}>
+                {variant === "um"
+                ? `Digite a quantidade de casas numéricas dos dois fatores para fazer a Gelosia, por exemplo, 258 vezes 19, digite 3 no Primeiro Fator e 2 no Segundo Fator
+                \n
+                (inclua as casas decimais, por exemplo, 10.2, digite 3)`
+                : "Digite a conta que você quer fazer na Gelosia, se tiver decimal, não digite a vírgula, porque a Gelosia não usa vírgula"
+                }
               </p>
               <label className="fator fator1">
-              <span>Primeiro Fator:</span><input className="f" id="f1" onKeyDown={apenasNumero} value={inputColunas || ""} onChange={e => setInputColunas(Number(e.target.value))} />
+              <span>Primeiro Fator:</span><input className="f" id="f1" onKeyDown={apenasNumero} value={inputColunas || ""} onChange={e => setInputColunas(e.target.value)} />
               </label>
               <br/><br/>
               <label className="fator fator2">
-              <span>Segundo Fator:</span><input className="f" id="f2" onKeyDown={apenasNumero} value={inputLinhas || ""} onChange={e => setInputLinhas(Number(e.target.value))} />
+              <span>Segundo Fator:</span><input className="f" id="f2" onKeyDown={apenasNumero} value={inputLinhas || ""} onChange={e => setInputLinhas(e.target.value)} />
               </label>
               <br /><br />
               <div className="botoes">
@@ -110,13 +139,14 @@ export function GelosiaUm () {
                       const colunaIndex = index % f1_2;
                       const tipo = tipoCelula(linhaIndex, colunaIndex);
 
-                      return ( <CelulaUm key={`${linhaIndex}-${colunaIndex}`}
+                      return ( <Celula key={`${linhaIndex}-${colunaIndex}`}
                           tipo={tipo}
                           linha={linhaIndex}
                           coluna={colunaIndex}
                           valores={valoresCaixas}
                           onChangeCaixa={handleCaixa}
                           travado={travado}
+                          travaBorda={variant === "dois"}
                         />
                       );
                   })}

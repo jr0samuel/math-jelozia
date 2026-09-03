@@ -74,51 +74,51 @@
 .borda-inf > input{
     border: 2px solid green;
 }
-.caixa.superior-esquerdo-2{
+.caixa.esquerdo-3{
     top: 10px;
     left: 20px;
 }
-.caixa.inferior-direito-2{
+.caixa.direito-3{
     bottom: 10px;
     right: 20px;
 }
-.caixa.superior-esquerdo-baixo-4{
+.caixa.esquerdo-baixo-4{
     top: 30px;
     left: 10px;
 }
-.caixa.superior-esquerdo-cima-4{
+.caixa.esquerdo-cima-4{
     top: 5px;
     left: 35px;
 }
-.caixa.inferior-direito-baixo-4{
+.caixa.direito-baixo-4{
     bottom: 5px;
     right: 35px;
 }
-.caixa.inferior-direito-cima-4{
+.caixa.direito-cima-4{
     bottom: 35px;
     right: 5px;
 }
-.caixa.superior-esquerdo-baixo-3{
+.caixa.esquerdo-baixo-5{
     top: 30px;
     left: 10px;
 }
-.caixa.superior-esquerdo-cima-3{
+.caixa.esquerdo-cima-5{
     top: 5px;
     left: 35px;
 }
-.caixa.inferior-direito-3{
+.caixa.direito-5{
     bottom: 10px;
     right: 20px;
 }
-.caixa.superior-esquerdo-3a{
+.caixa.esquerdo-6{
     top: 10px;
     left: 18px;
 }
-.caixa.inferior-direito-baixo-3a{
+.caixa.direito-baixo-6{
     bottom: 5px;
     right: 35px;
 }
-.caixa.inferior-direito-cima-3a{
+.caixa.direito-cima-6{
     bottom: 35px;
     right: 5px;
 }
