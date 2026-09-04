@@ -7,12 +7,14 @@ export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado, 
     const propsInput = (posicaoClasse, posicaoNome) => {
         const identificadorUnico = `caixa-linha-${linha}-coluna-${coluna}-posição-${posicaoNome}`;
         const readOnly = travado || (travaBorda && ["borda-sup", "borda-dir"].includes(tipo));
+        const valorAtual = pegarValor(posicaoNome) || "";
         return {
             className: `caixa ${posicaoClasse} ${readOnly ? 'travado' : 'nao-travado'}`,
-            value: pegarValor(posicaoNome) || "",
+            value: valorAtual,
             onKeyDown: handleKeyDown,
             onChange: (e) => handleChange(e, linha, coluna, posicaoNome, onChangeCaixa),
             readOnly,
+            tabIndex: travado ? (valorAtual !== "" ? 0 : -1) : undefined,
             id: identificadorUnico,
             name: identificadorUnico,
             "aria-label": `Caixa ${posicaoNome} na linha ${linha} e coluna ${coluna}`,
