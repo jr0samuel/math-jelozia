@@ -53,6 +53,24 @@ export function Gelosia ({variant}) {
         }
       }
     };
+    const entradaTab = (e, direcao) => {
+      if (e.key === "Tab") {
+        const caminhoFrente = direcao === "frente" && !e.shiftKey;
+        const caminhoTras = direcao === "tras" && e.shiftKey;
+        if (caminhoFrente || caminhoTras) {
+          const inputs = Array.from(document.querySelectorAll('input.caixa:not([tabindex="-1"])'));
+          if (inputs.length > 0) {
+            e.preventDefault();
+            inputs.sort((a, b) => Number(a.getAttribute('data-ordem')) - Number(b.getAttribute('data-ordem')));
+            if (caminhoFrente) {
+              inputs[0].focus();
+            } else {
+              inputs[inputs.length - 1].focus();
+            }
+          }
+        }
+      }
+    };
 
     const handleCaixa = (linha, coluna, posicaoCaixa, novoValor) => {
       const chaveUnica = `${linha}-${coluna}-${posicaoCaixa}`;
@@ -103,8 +121,12 @@ export function Gelosia ({variant}) {
           <header className="head-conteiner">
             <div className="conteiner">
               <div className='link-versao'>
-                <div><Link id="versoes" className="link-a" to={variant === "um" ? "/outra-versao" : "/"}>Outra versão da Gelosia</Link></div>
-                <div><a id="explicar" className="link-a" href='/gelosia-explicada' target='_blank' rel='noreferrer'>Explicação da Gelosia</a></div>
+                <div>
+                  <Link id="versoes" className="link-a" to={variant === "um" ? "/outra-versao" : "/"}>Outra versão da Gelosia</Link>
+                </div>
+                <div>
+                  <a id="explicar" className="link-a" href='/gelosia-explicada' target='_blank' rel='noreferrer'>Explicação da Gelosia</a>
+                </div>
               </div>
               <p className={`paragrafo paragrafo-${variant}`}>
                 {variant === "um"
@@ -115,15 +137,30 @@ export function Gelosia ({variant}) {
                 }
               </p>
               <label className="fator fator1">
-              <span>Primeiro Fator:</span><input className="f" id="f1" onKeyDown={apenasNumero} value={inputColunas || ""} onChange={e => setInputColunas(e.target.value)} />
+              <span>Primeiro Fator:</span>
+              <input className="f" id="f1"
+                     onKeyDown={apenasNumero}
+                     value={inputColunas || ""}
+                     onChange={e => setInputColunas(e.target.value)}
+              />
               </label>
               <br/><br/>
               <label className="fator fator2">
-              <span>Segundo Fator:</span><input className="f" id="f2" onKeyDown={apenasNumero} value={inputLinhas || ""} onChange={e => setInputLinhas(e.target.value)} />
+              <span>Segundo Fator:</span>
+              <input className="f" id="f2"
+                     onKeyDown={apenasNumero}
+                     value={inputLinhas || ""}
+                     onChange={e => setInputLinhas(e.target.value)}
+              />
               </label>
               <br /><br />
               <div className="botoes">
-                <Botao id="btn-montar" className="montar" onClick={gerarGrid}>Montar Gelosia</Botao>
+                <Botao id="btn-montar" className="montar"
+                       onClick={gerarGrid}
+                       onKeyDown={e => entradaTab(e, "frente")}
+                >
+                    Montar Gelosia
+                </Botao>
               </div>
             </div>
           </header>
@@ -138,7 +175,6 @@ export function Gelosia ({variant}) {
                       const linhaIndex = Math.floor(index / f1_2);
                       const colunaIndex = index % f1_2;
                       const tipo = tipoCelula(linhaIndex, colunaIndex);
-
                       return ( <Celula key={`${linhaIndex}-${colunaIndex}`}
                           tipo={tipo}
                           linha={linhaIndex}
@@ -153,8 +189,10 @@ export function Gelosia ({variant}) {
               </div>
               <div className="grupos botoes">
                 <div className='grupo fim'>
-                  <Botao id="btn-fim" onClick={() => setTravado(true)}
+                  <Botao id="btn-fim"
+                    onClick={() => setTravado(true)}
                     className={`${travado ? 'travado-ativo' : 'travado-nao-ativo'}`}
+                    onKeyDown={e => entradaTab(e, "tras")}
                   >
                     Finalizar Questão
                   </Botao>
@@ -163,8 +201,10 @@ export function Gelosia ({variant}) {
                   </p>
                 </div>
                 <div className="grupo volta">
-                  <Botao id="btn-volta" onClick={() => setTravado(false)}
+                  <Botao id="btn-volta"
+                    onClick={() => setTravado(false)}
                     className={`${!travado ? 'travado-nao-ativo' : 'travado-ativo'}`}
+                    // onKeyDown={e => entradaTab(e, "tras")}
                   >
                     Voltar para Questão
                   </Botao>

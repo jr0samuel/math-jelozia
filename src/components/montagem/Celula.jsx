@@ -8,18 +8,54 @@ export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado, 
         const identificadorUnico = `caixa-linha-${linha}-coluna-${coluna}-posição-${posicaoNome}`;
         const readOnly = travado || (travaBorda && ["borda-sup", "borda-dir"].includes(tipo));
         const valorAtual = pegarValor(posicaoNome) || "";
+        const calcularOrdemTabIndex = () => {
+            if (tipo === "borda-sup") return 10000 + coluna;
+            if (tipo === "borda-dir") return 20000 + linha;
+            if (!tipo.startsWith("borda") && tipo !== "esquina") return 30000 + (linha * 1000) + coluna;
+            if (tipo === "borda-inf") return 40000 - coluna;
+            if (tipo === "borda-esq") return 50000 - linha;
+            return 99999;
+        };
+        const navegarCustom = e => {
+            const inputs = Array.from(document.querySelectorAll('input.caixa:not([tabindex="-1"])'));
+            inputs.sort((a, b) => Number(a.getAttribute('data-ordem')) - Number(b.getAttribute('data-ordem')));
+            const indexAtual = inputs.findIndex(input => input === e.target);
+            if (indexAtual !== -1) {
+                e.preventDefault();
+                let proximoIndex = e.shiftKey ? indexAtual - 1 : indexAtual + 1;
+                if (proximoIndex >= inputs.length) {
+                    const elementoDestino = travado
+                      ? document.getElementById('btn-volta')
+                      : document.getElementById('btn-fim');
+                    if (elementoDestino) elementoDestino.focus();
+                } else if (proximoIndex < 0) {
+                    const btnMontar = document.getElementById('btn-montar');
+                    if (btnMontar) btnMontar.focus();
+                } else {
+                    inputs[proximoIndex].focus();
+                }
+            }
+        };
         return {
             className: `caixa ${posicaoClasse} ${readOnly ? 'travado' : 'nao-travado'}`,
             value: valorAtual,
-            onKeyDown: handleKeyDown,
-            onChange: (e) => handleChange(e, linha, coluna, posicaoNome, onChangeCaixa),
+            tabIndex: travado ? (valorAtual !== "" ? 0 : -1) : 0,
+            'data-ordem': calcularOrdemTabIndex(),
+            onFocus: e => e.target.select(),
+            onKeyDown: e => {
+                if (handleKeyDown) handleKeyDown(e);
+                if (e.key === "Tab") {
+                    navegarCustom(e);
+                    return;
+                }
+            },
+            onChange: e => handleChange(e, linha, coluna, posicaoNome, onChangeCaixa),
             readOnly,
-            tabIndex: travado ? (valorAtual !== "" ? 0 : -1) : undefined,
             id: identificadorUnico,
             name: identificadorUnico,
             "aria-label": `Caixa ${posicaoNome} na linha ${linha} e coluna ${coluna}`,
-            type:"text",
-            inputMode:"numeric",
+            type: "text",
+            inputMode: "numeric",
             maxLength: 1
         };
     };
