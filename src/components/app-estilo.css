@@ -77,6 +77,10 @@
   gap: 1.5rem;
   user-select: none;
 }
+.link-a:focus{
+  outline: 2px solid var(--accent);
+  padding: 3px 5px;
+}
 .artigo{
   display: flex;
   flex-direction: column;

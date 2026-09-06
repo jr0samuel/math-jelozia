@@ -103,8 +103,8 @@ export function Gelosia ({variant}) {
           <header className="head-conteiner">
             <div className="conteiner">
               <div className='link-versao'>
-                <div><Link to={variant === "um" ? "/outra-versao" : "/"}>Outra versão da Gelosia</Link></div>
-                <div><a href='/gelosia-explicada' target='_blank' rel='noreferrer'>Explicação da Gelosia</a></div>
+                <div><Link id="versoes" className="link-a" to={variant === "um" ? "/outra-versao" : "/"}>Outra versão da Gelosia</Link></div>
+                <div><a id="explicar" className="link-a" href='/gelosia-explicada' target='_blank' rel='noreferrer'>Explicação da Gelosia</a></div>
               </div>
               <p className={`paragrafo paragrafo-${variant}`}>
                 {variant === "um"
@@ -123,7 +123,7 @@ export function Gelosia ({variant}) {
               </label>
               <br /><br />
               <div className="botoes">
-                <Botao className="montar" onClick={gerarGrid}>Montar Gelosia</Botao>
+                <Botao id="btn-montar" className="montar" onClick={gerarGrid}>Montar Gelosia</Botao>
               </div>
             </div>
           </header>
@@ -153,7 +153,7 @@ export function Gelosia ({variant}) {
               </div>
               <div className="grupos botoes">
                 <div className='grupo fim'>
-                  <Botao onClick={() => setTravado(true)}
+                  <Botao id="btn-fim" onClick={() => setTravado(true)}
                     className={`${travado ? 'travado-ativo' : 'travado-nao-ativo'}`}
                   >
                     Finalizar Questão
@@ -163,7 +163,7 @@ export function Gelosia ({variant}) {
                   </p>
                 </div>
                 <div className="grupo volta">
-                  <Botao onClick={() => setTravado(false)}
+                  <Botao id="btn-volta" onClick={() => setTravado(false)}
                     className={`${!travado ? 'travado-nao-ativo' : 'travado-ativo'}`}
                   >
                     Voltar para Questão

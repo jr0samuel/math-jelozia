@@ -54,10 +54,9 @@ export default function GelosiaExplicada ( ) {
                 ou seja, os quadros com barra abaixo de cada número do primeiro fator se relaciona com cada número do
                 segundo fator, como na imagem, 5 x 1 depois 5 x 9 depois 2 x 1 depois 2 x 9.
                 <br/><br/>
-                O resultado de 5 x 9 é 45, e os quadros têm dois lados cortados com barra, o lado esquerdo é a dezena, no caso,
-                4, e o lado direito é a unidade, no caso, 5, porque a multiplicação entre unidades pode resultar em alguma dezena
-                ou outra unidade. Se o resultado for unidade, como 5 x 1 = 5, pode preencher com 0 no lado esquerdo ou deixar
-                vazio, porque é zero à esquerda.
+                O resultado de 5 x 9 é 45. Os quadros têm dois lados cortados com barra, o lado esquerdo é a dezena, no caso,
+                4, e o lado direito é a unidade, no caso, 5, porque a multiplicação entre duas unidades pode resultar em alguma dezena,
+                como 45, ou em outra unidade. Em caso de unidade, como em 5 x 1 = 5, preencha com 0 no lado esquerdo.
                 <br/><br/>
                 Em seguida, as somas são feitas nas diagonais passando pelos triângulos de cada sequência diagonal. Há um
                 detalhe: para ler o produto final depois de terminar a conta, a direção é o que falei três parágrafos atrás, na
