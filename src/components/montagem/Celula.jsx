@@ -9,21 +9,41 @@ export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado, 
         const readOnly = travado || (travaBorda && ["borda-sup", "borda-dir"].includes(tipo));
         const valorAtual = pegarValor(posicaoNome) || "";
         const calcularOrdemTabIndex = () => {
+            const isCima = posicaoClasse.includes("cima");
+            const isDireito = posicaoClasse.includes("direito") || posicaoNome.includes("dir");
             if (tipo === "borda-sup") return 10000 + coluna;
             if (tipo === "borda-dir") return 20000 + linha;
-            if (!tipo.startsWith("borda") && tipo !== "esquina") return 30000 + (linha * 1000) + coluna;
+            if (isCima) return 50000 - (linha * 100) - coluna - (isDireito ? 0.5 : 0);
+            if (!tipo.startsWith("borda") && tipo !== "esquina") return 30000 + (linha * 100) + coluna;
             if (tipo === "borda-inf") return 40000 - coluna;
-            if (tipo === "borda-esq") return 50000 - linha;
+            if (tipo === "borda-esq") return 40100 - linha;
             return 99999;
         };
         const navegarCustom = e => {
-            const inputs = Array.from(document.querySelectorAll('input.caixa:not([tabindex="-1"])'));
-            inputs.sort((a, b) => Number(a.getAttribute('data-ordem')) - Number(b.getAttribute('data-ordem')));
-            const indexAtual = inputs.findIndex(input => input === e.target);
+            let inputsDom = Array.from(document.querySelectorAll('input.caixa:not([tabindex="-1"])'));
+            inputsDom.sort((a, b) => Number(a.getAttribute('data-ordem')) - Number(b.getAttribute('data-ordem')));
+            const normais = inputsDom.filter(i => Number(i.getAttribute('data-ordem')) < 39000);
+            const resultados = inputsDom.filter(i => {
+              const ord = Number(i.getAttribute('data-ordem'));
+              return ord >= 39000 && ord < 41000;
+            });
+            const cimas = inputsDom.filter(i => {
+              const ord = Number(i.getAttribute('data-ordem'));
+              return ord >= 49000 && ord < 51000;
+            });
+            const trilhaFinal = [];
+            let rIndex = 0, cIndex = 0;
+            if (resultados.length > 0) trilhaFinal.push(resultados[rIndex++]);
+            while (rIndex < resultados.length || cIndex < cimas.length) {
+              if (rIndex < resultados.length) trilhaFinal.push(resultados[rIndex++]);
+              if (cIndex < cimas.length) trilhaFinal.push(cimas[cIndex++]);
+            }
+            inputsDom = [...normais, ...trilhaFinal];
+            const indexAtual = inputsDom.findIndex(input => input === e.target);
             if (indexAtual !== -1) {
                 e.preventDefault();
                 let proximoIndex = e.shiftKey ? indexAtual - 1 : indexAtual + 1;
-                if (proximoIndex >= inputs.length) {
+                if (proximoIndex >= inputsDom.length) {
                     const elementoDestino = travado
                       ? document.getElementById('btn-volta')
                       : document.getElementById('btn-fim');
@@ -32,7 +52,7 @@ export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado, 
                     const btnMontar = document.getElementById('btn-montar');
                     if (btnMontar) btnMontar.focus();
                 } else {
-                    inputs[proximoIndex].focus();
+                    inputsDom[proximoIndex].focus();
                 }
             }
         };

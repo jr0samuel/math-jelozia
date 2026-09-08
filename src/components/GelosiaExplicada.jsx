@@ -96,19 +96,16 @@ export default function GelosiaExplicada ( ) {
                 200 + 180 + 50 + 45 = 475
                 <br/><br/>
                 A Gelosia é uma ferramenta visual, artística e estética, e como diz o professor Cláudio Possani, “é elegante, é
-                bonitinho”. Esse aspecto visual facilita o aprendizado e o uso, e inspira a estudar mais, porque é animador, e a
+                bonitinho”. Esse aspecto visual facilita o aprendizado e o uso, e inspira a estudar mais por ser animador, e a
                 melhor forma de ensinar e aprender é com ânimo, além disso, dá para fazer competição de velocidade sobre
                 quem monta os quadros mais rápido e quem executa o cálculo mais rápido, mas o sistema que fiz serve para
                 não precisar montar, porque é chato montar na mão, mas fica o desafio.
                 <br/><br/>
-                Vou disponibilizar, no link abaixo, imagens com a gelosia em branco e em vários formatos de 1x1 até 6x6
-                para imprimir e escrever, mas também é importante montar a gelosia na mão. Isso é interessante para professores.
+                O link abaixo é um zip com imagens da gelosia em branco e em vários formatos de 1x1 até 6x6
+                para imprimir e escrever, mas também é importante montar a gelosia na mão.
+                Isso é interessante para os professores desafiarem os alunos.
                 <br/>
-                <a href="/gelosias_em_branco_de_1x1_a_6x6.zip" download="gelosias_em_branco_1x1_6x6.zip">zip das imagens</a>
-                <br/><br/>
-                modelo de gelosia em branco no formato 2x2
-                <br/>
-                <img src="/gelosia_2x2.png" alt="modelo de gelosia em branco no formato 2x2"></img>
+                <a href="/gelosias_em_branco_de_1x1_a_6x6.zip" download="gelosias_em_branco_1x1_6x6.zip">download</a>
             </h4>
         </div>
         </>
