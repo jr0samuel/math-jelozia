@@ -7,7 +7,7 @@ export const Botao = ({onClick, children, className, onKeyDown, ...rest}) => {
             className={`btn ${className} ${clicou ? "clicou" : "nao-clicado"}`}
             onKeyDown={e => {
                 if (bind.onKeyDown) bind.onKeyDown(e);
-                if(onKeyDown) onKeyDown(e);
+                if (onKeyDown) onKeyDown(e);
             }}
         >
             {children}

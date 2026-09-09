@@ -2,7 +2,7 @@ import React from "react";
 import "./celula-estilo.css";
 import { handleChange, handleKeyDown } from "./celula-utils.js";
 
-export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado, travaBorda }) {
+export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado, travaBorda, btnMontarRef, btnFimRef, btnVoltaRef }) {
     const pegarValor = posicao => valores[`${linha}-${coluna}-${posicao}`] || "";
     const propsInput = (posicaoClasse, posicaoNome) => {
         const identificadorUnico = `caixa-linha-${linha}-coluna-${coluna}-posição-${posicaoNome}`;
@@ -45,12 +45,11 @@ export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado, 
                 let proximoIndex = e.shiftKey ? indexAtual - 1 : indexAtual + 1;
                 if (proximoIndex >= inputsDom.length) {
                     const elementoDestino = travado
-                      ? document.getElementById('btn-volta')
-                      : document.getElementById('btn-fim');
+                      ? btnVoltaRef.current
+                      : btnFimRef.current;
                     if (elementoDestino) elementoDestino.focus();
                 } else if (proximoIndex < 0) {
-                    const btnMontar = document.getElementById('btn-montar');
-                    if (btnMontar) btnMontar.focus();
+                    if (btnMontarRef.current) btnMontarRef.current.focus();
                 } else {
                     inputsDom[proximoIndex].focus();
                 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 import "./app-estilo.css";
 
@@ -101,6 +101,27 @@ export function Gelosia ({variant}) {
         valoresCaixas: { ...atual.valoresCaixas, [chaveUnica]: novoValor }
       });
     };
+
+    const btnFimRef = useRef(null);
+    const btnVoltaRef = useRef(null);
+    const btnMontarRef = useRef(null);
+    const handleInputKeyUp = e => {
+      if (e.key === "Enter") {
+        const val1 = Number(atual.inputColunas);
+        const val2 = Number(atual.inputLinhas);
+        if (val1 >=1 && val2 >= 1) {
+          if (btnMontarRef.current) {
+            btnMontarRef.current.classList.add('clicou');
+            btnMontarRef.current.classList.remove('nao-clicado');
+            setTimeout(() => {
+              btnMontarRef.current.classList.remove('clicou');
+              btnMontarRef.current.classList.add('nao-clicado');
+            }, 150);
+          }
+          gerarGrid();
+        }
+      }
+    };
     
     const tipoCelula = (linhaIndex, colunaIndex) => {
       let c = colunaIndex + 1;
@@ -165,6 +186,7 @@ export function Gelosia ({variant}) {
               <span>Primeiro Fator:</span>
               <input className="f" id="f1"
                      onKeyDown={apenasNumero}
+                     onKeyUp={handleInputKeyUp}
                      value={atual.inputColunas || ""}
                      onChange={e => atualizarAtual({ inputColunas: e.target.value })}
               />
@@ -174,13 +196,15 @@ export function Gelosia ({variant}) {
               <span>Segundo Fator:</span>
               <input className="f" id="f2"
                      onKeyDown={apenasNumero}
+                     onKeyUp={handleInputKeyUp}
                      value={atual.inputLinhas || ""}
                      onChange={e => atualizarAtual({ inputLinhas: e.target.value })}
               />
               </label>
               <br /><br />
               <div className="botoes">
-                <Botao id="btn-montar" className="montar"
+                <Botao ref={btnMontarRef}
+                       id="btn-montar" className="montar"
                        onClick={gerarGrid}
                        onKeyDown={e => entradaTab(e, "frente")}
                 >
@@ -209,17 +233,21 @@ export function Gelosia ({variant}) {
                           onChangeCaixa={handleCaixa}
                           travado={atual.travado}
                           travaBorda={variant === "dois"}
+                          btnMontarRef={btnMontarRef}
+                          btnFimRef={btnFimRef}
+                          btnVoltaRef={btnVoltaRef}
                         />
                       );
                     })}
               </div>
               <div className="grupos botoes">
                 <div className='grupo fim'>
-                  <Botao id="btn-fim"
+                  <Botao ref={btnFimRef}
+                    id="btn-fim"
                     onClick={() => atualizarAtual({ travado: true })}
                     onKeyDown={e => entradaTab(e, "tras")}
-                    className={`${atual.travado ? 'travado-ativo' : 'travado-nao-ativo'}`}
                     tabIndex={atual.travado ? -1 : 0}
+                    className={`${atual.travado ? 'travado-ativo' : 'travado-nao-ativo'}`}
                   >
                     Finalizar Questão
                   </Botao>
@@ -228,11 +256,12 @@ export function Gelosia ({variant}) {
                   </p>
                 </div>
                 <div className="grupo volta">
-                  <Botao id="btn-volta"
+                  <Botao ref={btnVoltaRef}
+                    id="btn-volta"
                     onClick={() => atualizarAtual({ travado: false })}
                     onKeyDown={e => entradaTab(e, "tras")}
-                    className={`${!atual.travado ? 'travado-nao-ativo' : 'travado-ativo'}`}
                     tabIndex={!atual.travado ? -1 : 0}
+                    className={`${!atual.travado ? 'travado-nao-ativo' : 'travado-ativo'}`}
                   >
                     Voltar para Questão
                   </Botao>
