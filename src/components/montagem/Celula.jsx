@@ -2,7 +2,7 @@ import React from "react";
 import "./celula-estilo.css";
 import { handleChange, handleKeyDown } from "./celula-utils.js";
 
-export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado, travaBorda, btnMontarRef, btnFimRef, btnVoltaRef }) {
+export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado, travaBorda, registrarInput, getInputs, btnMontarRef, btnFimRef, btnVoltaRef }) {
     const pegarValor = posicao => valores[`${linha}-${coluna}-${posicao}`] || "";
     const propsInput = (posicaoClasse, posicaoNome) => {
         const identificadorUnico = `caixa-linha-${linha}-coluna-${coluna}-posição-${posicaoNome}`;
@@ -20,7 +20,7 @@ export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado, 
             return 99999;
         };
         const navegarCustom = e => {
-            let inputsDom = Array.from(document.querySelectorAll('input.caixa:not([tabindex="-1"])'));
+            let inputsDom = getInputs().filter(input => input && input.getAttribute('tabindex') !== '-1');
             inputsDom.sort((a, b) => Number(a.getAttribute('data-ordem')) - Number(b.getAttribute('data-ordem')));
             const normais = inputsDom.filter(i => Number(i.getAttribute('data-ordem')) < 39000);
             const resultados = inputsDom.filter(i => {
@@ -60,6 +60,7 @@ export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado, 
             value: valorAtual,
             tabIndex: travado ? (valorAtual !== "" ? 0 : -1) : 0,
             'data-ordem': calcularOrdemTabIndex(),
+            ref: registrarInput(`caixa-${linha}-${coluna}-${posicaoNome}`),
             onFocus: e => e.target.select(),
             onKeyDown: e => {
                 if (handleKeyDown) handleKeyDown(e);

@@ -59,12 +59,18 @@ export function Gelosia ({variant}) {
         }
       }
     };
+    const inputsMapRef = useRef(new Map());
+    const registrarInput = chave => elemento => {
+      if (elemento) { inputsMapRef.current.set(chave, elemento) }
+      else { inputsMapRef.current.delete(chave) }
+    };
     const entradaTab = (e, direcao) => {
       if (e.key === "Tab") {
         const caminhoFrente = direcao === "frente" && !e.shiftKey;
         const caminhoTras = direcao === "tras" && e.shiftKey;
         if (caminhoFrente || caminhoTras) {
-          let inputsDom = Array.from(document.querySelectorAll('input.caixa:not([tabindex="-1"])'));
+          let inputsDom = Array.from(inputsMapRef.current.values())
+            .filter(input => input && input.getAttribute('tabindex') !== '-1');
           if (inputsDom.length > 0) {
             e.preventDefault();
             inputsDom.sort((a, b) => Number(a.getAttribute('data-ordem')) - Number(b.getAttribute('data-ordem')));
@@ -233,6 +239,8 @@ export function Gelosia ({variant}) {
                           onChangeCaixa={handleCaixa}
                           travado={atual.travado}
                           travaBorda={variant === "dois"}
+                          registrarInput={registrarInput}
+                          getInputs={() => Array.from(inputsMapRef.current.values())}
                           btnMontarRef={btnMontarRef}
                           btnFimRef={btnFimRef}
                           btnVoltaRef={btnVoltaRef}
