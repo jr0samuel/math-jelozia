@@ -224,6 +224,7 @@ export function Gelosia ({variant}) {
           ) : (
           <>
             <div className='app-jelozia'>
+              <p className="paragrafo">Se você estiver usando computador, <br/>aperte Tab para ver o caminho que é feito ao longo da gelosia</p>
               <div className="jelozia"
                   style={{gridTemplateColumns:`repeat(${atual.f1_2}, 100px)`}}>
                     {Array.from({length: totalCelulas}).map((_, index) => {

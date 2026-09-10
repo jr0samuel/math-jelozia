@@ -1,4 +1,8 @@
 export default function GelosiaExplicada ( ) {
+    const classe = "link-a";
+    const aHrefUm = "https://www.obaricentrodamente.com/2011/12/o-metodo-da-gelosia-para-multiplicacoes.html";
+    const aHrefDois = "/gelosias_em_branco_de_1x1_a_6x6.zip";
+    const downLoad = "gelosias_em_branco_1x1_6x6.zip";
     return (
         <>
         <div className="artigo">
@@ -94,6 +98,9 @@ export default function GelosiaExplicada ( ) {
                 5 x 9 = 45 | 5 x 9 na grade<br/>
                 à esquerda do x, coloquei o primeiro fator, como na imagem<br/>
                 200 + 180 + 50 + 45 = 475
+                const classe = "link-a";
+                <br/><br/>
+                Quero fazer menção ao site <a className={classe} href={aHrefUm}>"O Baricentro da Mente"</a>, que foi o primeiro lugar onde vi a gelosia.
                 <br/><br/>
                 A Gelosia é uma ferramenta visual, artística e estética, e como diz o professor Cláudio Possani, “é elegante, é
                 bonitinho”. Esse aspecto visual facilita o aprendizado e o uso, e inspira a estudar mais por ser animador, e a
@@ -105,7 +112,7 @@ export default function GelosiaExplicada ( ) {
                 para imprimir e escrever, mas também é importante montar a gelosia na mão.
                 Isso é interessante para os professores desafiarem os alunos.
                 <br/>
-                <a href="/gelosias_em_branco_de_1x1_a_6x6.zip" download="gelosias_em_branco_1x1_6x6.zip">download</a>
+                <a className={classe} href={aHrefDois} download={downLoad}>download</a>
             </h4>
         </div>
         </>
