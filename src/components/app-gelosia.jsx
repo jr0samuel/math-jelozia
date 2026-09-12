@@ -174,7 +174,7 @@ export function Gelosia ({variant}) {
             <div className="conteiner">
               <div className='link-versao'>
                 <div>
-                  <Link id="versoes" className="link-a" to={variant === "um" ? "/outra-versao" : "/"}>Outra versão da Gelosia</Link>
+                  <Link id="versoes" className="link-a" to={variant === "um" ? "/versao-dois" : "/versao-um"}>Outra versão da Gelosia</Link>
                 </div>
                 <div>
                   <a id="explicar" className="link-a" href='/gelosia-explicada' target='_blank' rel='noreferrer'>Explicação da Gelosia</a>
@@ -182,9 +182,11 @@ export function Gelosia ({variant}) {
               </div>
               <p className={`paragrafo paragrafo-${variant}`}>
                 {variant === "um"
-                ? `Digite a quantidade de casas numéricas dos dois fatores para fazer a Gelosia, por exemplo, 258 vezes 19, digite 3 no Primeiro Fator e 2 no Segundo Fator
+                ? `
+                Digite a quantidade de casas numéricas dos dois fatores para fazer a Gelosia, por exemplo, 258 vezes 19, digite 3 no Primeiro Fator e 2 no Segundo Fator
                 \n
-                (inclua as casas decimais, por exemplo, 10.2, digite 3)`
+                (inclua as casas decimais, por exemplo, 10.2, digite 3)
+                `
                 : "Digite a conta que você quer fazer na Gelosia, se tiver decimal, não digite a vírgula, porque a Gelosia não usa vírgula"
                 }
               </p>
