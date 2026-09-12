@@ -21,7 +21,7 @@ export function Gelosia ({variant}) {
       }));
     };
     const gerarGrid = () => {
-      if (variant === "um") {
+      if (variant === "dois") {
         const colunas = Number(atual.inputColunas);
         const linhas = Number(atual.inputLinhas);
         if (colunas > 0 && linhas > 0) {
@@ -181,7 +181,7 @@ export function Gelosia ({variant}) {
                 </div>
               </div>
               <p className={`paragrafo paragrafo-${variant}`}>
-                {variant === "um"
+                {variant === "dois"
                 ? `
                 Digite a quantidade de casas numéricas dos dois fatores para fazer a Gelosia, por exemplo, 258 vezes 19, digite 3 no Primeiro Fator e 2 no Segundo Fator
                 \n
@@ -241,7 +241,7 @@ export function Gelosia ({variant}) {
                           valores={atual.valoresCaixas}
                           onChangeCaixa={handleCaixa}
                           travado={atual.travado}
-                          travaBorda={variant === "dois"}
+                          travaBorda={variant === "um"}
                           registrarInput={registrarInput}
                           getInputs={() => Array.from(inputsMapRef.current.values())}
                           btnMontarRef={btnMontarRef}

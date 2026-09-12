@@ -14,8 +14,8 @@
   margin-bottom: 30px;
   user-select: none;
 }
-.paragrafo-um{ max-width: 650px; }
-.paragrafo-dois{ max-width: 530px; }
+.paragrafo-um{ max-width: 530px; }
+.paragrafo-dois{ max-width: 650px; }
 .f{
   width: 70px;
   margin-left: 15px;
