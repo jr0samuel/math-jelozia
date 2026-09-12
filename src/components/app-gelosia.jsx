@@ -258,7 +258,8 @@ export function Gelosia ({variant}) {
                     onClick={() => atualizarAtual({ travado: true })}
                     onKeyDown={e => entradaTab(e, "tras")}
                     tabIndex={atual.travado ? -1 : 0}
-                    className={`${atual.travado ? 'travado-ativo' : 'travado-nao-ativo'}`}
+                    className={`${atual.travado ? 'travado-ativo disable' : 'travado-nao-ativo'}`}
+                    disabled={atual.travado}
                   >
                     Finalizar Questão
                   </Botao>
@@ -272,7 +273,8 @@ export function Gelosia ({variant}) {
                     onClick={() => atualizarAtual({ travado: false })}
                     onKeyDown={e => entradaTab(e, "tras")}
                     tabIndex={!atual.travado ? -1 : 0}
-                    className={`${!atual.travado ? 'travado-nao-ativo' : 'travado-ativo'}`}
+                    className={`${!atual.travado ? 'travado-nao-ativo disable' : 'travado-ativo'}`}
+                    disabled={!atual.travado}
                   >
                     Voltar para Questão
                   </Botao>

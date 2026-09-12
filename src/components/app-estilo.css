@@ -67,8 +67,9 @@
   border: solid 1px var(--accent-border);
   padding: 10px;
 }
+.disable{cursor: default;}
 @media screen and (max-width:298px){
-  .fator2{font-size: 105%;}
+  .fator2 {font-size: 105%;}
   .f { margin-right: 15px; }
 }
 .link-versao{
