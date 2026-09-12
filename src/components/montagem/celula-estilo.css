@@ -74,11 +74,11 @@
 .borda-inf > input{
     border: 2px solid green;
 }
-.caixa.esquerdo-3{
+.caixa.esquerdo-2{
     top: 10px;
     left: 20px;
 }
-.caixa.direito-3{
+.caixa.direito-2{
     bottom: 10px;
     right: 20px;
 }
@@ -98,27 +98,27 @@
     bottom: 35px;
     right: 5px;
 }
-.caixa.esquerdo-baixo-5{
+.caixa.esquerdo-baixo-3a{
     top: 30px;
     left: 10px;
 }
-.caixa.esquerdo-cima-5{
+.caixa.esquerdo-cima-3a{
     top: 5px;
     left: 35px;
 }
-.caixa.direito-5{
+.caixa.direito-3a{
     bottom: 10px;
     right: 20px;
 }
-.caixa.esquerdo-6{
+.caixa.esquerdo-3b{
     top: 10px;
     left: 18px;
 }
-.caixa.direito-baixo-6{
+.caixa.direito-baixo-3b{
     bottom: 5px;
     right: 35px;
 }
-.caixa.direito-cima-6{
+.caixa.direito-cima-3b{
     bottom: 35px;
     right: 5px;
 }

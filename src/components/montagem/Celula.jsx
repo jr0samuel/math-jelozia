@@ -81,7 +81,7 @@ export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado, 
     };
     if(tipo === "esquina"){
         return (
-            <div className={`celula ${tipo}`}>
+            <div className={`celula ${tipo} cell-0`}>
                 <div>#######
                   #######
                 #######</div>
@@ -90,20 +90,20 @@ export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado, 
     };
     if(tipo.startsWith("borda")){
         return (
-            <div className={`celula ${tipo}`}>
+            <div className={`celula ${tipo} cell-1`}>
                 <input {...propsInput("centro", "central-valor-unico")} />
             </div>
         );
     };
-    if(tipo === "3"){
+    if(tipo === "2"){
         return (
-            <div className={`celula ${tipo} cell-3`}>
-                <div className="e-3">
-                    <input {...propsInput("esquerdo-3", "esq-3")} />
+            <div className={`celula ${tipo} cell-2`}>
+                <div className="e-2">
+                    <input {...propsInput("esquerdo-2", "esq-2")} />
                 </div>
                 <div className="barra"></div>
-                <div className="d-3">
-                    <input {...propsInput("direito-3", "dir-3")} />
+                <div className="d-2">
+                    <input {...propsInput("direito-2", "dir-2")} />
                 </div>
             </div>
         );
@@ -123,30 +123,30 @@ export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado, 
             </div>
         );
     }
-    if(tipo === "5"){
+    if(tipo === "3a"){
         return (
-            <div className={`celula ${tipo} cell-5`}>
-                <div className="e-5">
-                    <input {...propsInput("esquerdo-baixo-5", "esq-b-5")} />
-                    <input {...propsInput("esquerdo-cima-5", "esq-c-5")} />
+            <div className={`celula ${tipo} cell-3a`}>
+                <div className="e-3a">
+                    <input {...propsInput("esquerdo-baixo-3a", "esq-b-3a")} />
+                    <input {...propsInput("esquerdo-cima-3a", "esq-c-3a")} />
                 </div>
                 <div className="barra"></div>
-                <div className="d-5">
-                    <input {...propsInput("direito-5", "dir-5")} />
+                <div className="d-3a">
+                    <input {...propsInput("direito-3a", "dir-3a")} />
                 </div>
             </div>
         );
     }
-    if(tipo === "6"){
+    if(tipo === "3b"){
         return (
-            <div className={`celula ${tipo} cell-6`}>
-                <div className="e-6">
-                    <input {...propsInput("esquerdo-6", "esq-6")} />
+            <div className={`celula ${tipo} cell-3b`}>
+                <div className="e-3b">
+                    <input {...propsInput("esquerdo-3b", "esq-3b")} />
                 </div>
                 <div className="barra"></div>
-                <div className="d-6">
-                    <input {...propsInput("direito-baixo-6", "dir-b-6")} />
-                    <input {...propsInput("direito-cima-6", "dir-c-6")} />
+                <div className="d-3b">
+                    <input {...propsInput("direito-baixo-3b", "dir-b-3b")} />
+                    <input {...propsInput("direito-cima-3b", "dir-c-3b")} />
                 </div>
             </div>
         );
