@@ -232,7 +232,7 @@ export function Gelosia ({variant}) {
             <div className='app-jelozia'>
               <p className="paragrafo">
                 Se você estiver usando computador, <br/>o Tab fará o caminho exato do cálculo ao longo da gelosia
-                <br/>
+                <br/><br/>
                 Se você clicar em Fazer Multiplicação ou Soma, <br/>o Tab seguirá o caminho específico da multiplicação ou da soma
               </p>
               <div className='etapa'>
