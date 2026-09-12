@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom';
 
 export function Gelosia ({variant}) {
     const [dadosVersao, setDadosVersao] = useState({
-      um: { inputColunas: "", inputLinhas: "", f1_2: 0, f2_2: 0, valoresCaixas: {}, travado: false },
-      dois: { inputColunas: "", inputLinhas: "", f1_2: 0, f2_2: 0, valoresCaixas: {}, travado: false }
+      um: { inputColunas: "", inputLinhas: "", f1_2: 0, f2_2: 0, valoresCaixas: {}, travado: false, etapa: "inicial" },
+      dois: { inputColunas: "", inputLinhas: "", f1_2: 0, f2_2: 0, valoresCaixas: {}, travado: false, etapa: "inicial" }
     });
     const atual = dadosVersao[variant] || dadosVersao.um;
     const atualizarAtual = (camposAtualizados) => {
@@ -29,10 +29,11 @@ export function Gelosia ({variant}) {
             f1_2: colunas + 2,
             f2_2: linhas + 2,
             valoresCaixas: {},
-            travado: false
+            travado: false,
+            etapa: "inicial"
           });
         } else {
-          atualizarAtual({ f1_2: 0, f2_2: 0 });
+          atualizarAtual({ f1_2: 0, f2_2: 0, etapa: "inicial" });
         }
       } else {
         const fator1 = String(atual.inputColunas || "");
@@ -52,10 +53,11 @@ export function Gelosia ({variant}) {
             f1_2: colunasTotal,
             f2_2: linhasTotal,
             travado: false,
-            valoresCaixas: novosValores
+            valoresCaixas: novosValores,
+            etapa: "inicial"
           });
         } else {
-          atualizarAtual({ f1_2: 0, f2_2: 0, setValoresCaixas: {} });
+          atualizarAtual({ f1_2: 0, f2_2: 0, setValoresCaixas: {}, etapa: "inicial" });
         }
       }
     };
@@ -108,9 +110,12 @@ export function Gelosia ({variant}) {
       });
     };
 
+    const btnMontarRef = useRef(null);
+    const btnMultRef = useRef(null);
+    const btnSumRef = useRef(null);
     const btnFimRef = useRef(null);
     const btnVoltaRef = useRef(null);
-    const btnMontarRef = useRef(null);
+
     const handleInputKeyUp = e => {
       if (e.key === "Enter") {
         const val1 = Number(atual.inputColunas);
@@ -214,7 +219,6 @@ export function Gelosia ({variant}) {
                 <Botao ref={btnMontarRef}
                        id="btn-montar" className="montar"
                        onClick={gerarGrid}
-                       onKeyDown={e => entradaTab(e, "frente")}
                 >
                     Montar Gelosia
                 </Botao>
@@ -226,7 +230,34 @@ export function Gelosia ({variant}) {
           ) : (
           <>
             <div className='app-jelozia'>
-              <p className="paragrafo">Se você estiver usando computador, <br/>aperte Tab para ver o caminho que é feito ao longo da gelosia</p>
+              <p className="paragrafo">
+                Se você estiver usando computador, <br/>o Tab fará o caminho exato do cálculo ao longo da gelosia
+                <br/>
+                Se você clicar em Fazer Multiplicação ou Soma, <br/>o Tab seguirá o caminho específico da multiplicação ou da soma
+              </p>
+              <div className='etapa'>
+                <div className='step'>
+                  <Botao id="btn-mult" ref={btnMultRef}
+                         onClick={() => atualizarAtual({etapa:'multiplicacao'})}
+                         disabled={atual.etapa === 'multiplicacao'}
+                         style={{cursor: atual.etapa === 'multiplicacao' ? 'default' : 'pointer'}}
+                         className={atual.etapa === 'multiplicacao' ? 'disable' : ''}
+                         onKeyDown={e => entradaTab(e, "frente")}
+                  >
+                      Fazer Multiplicação
+                  </Botao>
+                  <Botao id="btn-sum" ref={btnSumRef}
+                         onClick={() => atualizarAtual({etapa:'soma'})}
+                         disabled={atual.etapa !== 'multiplicacao'}
+                         style={{cursor: atual.etapa !== 'multiplicacao' ? 'default' : 'pointer'}}
+                         className={atual.etapa !== 'multiplicacao' ? 'disable' : ''}
+                         onKeyDown={e => entradaTab(e, "frente")}
+                  >
+                      Fazer Soma
+                  </Botao>
+                </div>
+                <p className='paragrafo'>primeiro multiplicação, depois soma</p>
+              </div>
               <div className="jelozia"
                   style={{gridTemplateColumns:`repeat(${atual.f1_2}, 100px)`}}>
                     {Array.from({length: totalCelulas}).map((_, index) => {
@@ -247,6 +278,9 @@ export function Gelosia ({variant}) {
                           btnMontarRef={btnMontarRef}
                           btnFimRef={btnFimRef}
                           btnVoltaRef={btnVoltaRef}
+                          etapa={atual.etapa}
+                          btnMultRef={btnMultRef}
+                          btnSumRef={btnSumRef}
                         />
                       );
                     })}
