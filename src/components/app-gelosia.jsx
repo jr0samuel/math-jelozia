@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom';
 
 export function Gelosia ({variant}) {
     const [dadosVersao, setDadosVersao] = useState({
-      um: { inputColunas: "", inputLinhas: "", f1_2: 0, f2_2: 0, valoresCaixas: {}, travado: false, etapa: "inicial" },
-      dois: { inputColunas: "", inputLinhas: "", f1_2: 0, f2_2: 0, valoresCaixas: {}, travado: false, etapa: "inicial" }
+      um: { inputColunas: "", inputLinhas: "", f1_2: 0, f2_2: 0, valoresCaixas: {}, travado: false, etapa: "inicial", tabTotal: true },
+      dois: { inputColunas: "", inputLinhas: "", f1_2: 0, f2_2: 0, valoresCaixas: {}, travado: false, etapa: "inicial", tabTotal: true }
     });
     const atual = dadosVersao[variant] || dadosVersao.um;
     const atualizarAtual = (camposAtualizados) => {
@@ -30,7 +30,8 @@ export function Gelosia ({variant}) {
             f2_2: linhas + 2,
             valoresCaixas: {},
             travado: false,
-            etapa: "inicial"
+            etapa: "inicial",
+            tabTotal: true
           });
         } else {
           atualizarAtual({ f1_2: 0, f2_2: 0, etapa: "inicial" });
@@ -54,7 +55,8 @@ export function Gelosia ({variant}) {
             f2_2: linhasTotal,
             travado: false,
             valoresCaixas: novosValores,
-            etapa: "inicial"
+            etapa: "inicial",
+            tabTotal: true
           });
         } else {
           atualizarAtual({ f1_2: 0, f2_2: 0, setValoresCaixas: {}, etapa: "inicial" });
@@ -113,6 +115,7 @@ export function Gelosia ({variant}) {
     const btnMontarRef = useRef(null);
     const btnMultRef = useRef(null);
     const btnSumRef = useRef(null);
+    const btnTabTotalRef = useRef(null);
     const btnFimRef = useRef(null);
     const btnVoltaRef = useRef(null);
 
@@ -232,26 +235,51 @@ export function Gelosia ({variant}) {
             <div className='app-jelozia'>
               <p className="paragrafo">
                 Se você estiver usando computador, <br/>o Tab fará o caminho exato do cálculo ao longo da gelosia
-                <br/><br/>
+                <br />e também pode clicar em Tab Completo após clicar em Multiplicação ou Soma
+              </p>
+              <div className='tabTotal'>
+                <Botao ref={btnTabTotalRef} id="btn-tabTotal"
+                      onClick={() => atualizarAtual({tabTotal: true})}
+                >
+                  Tab Completo
+                </Botao>
+              </div>
+              <p>
                 Se você clicar em Fazer Multiplicação ou Soma, <br/>o Tab seguirá o caminho específico da multiplicação ou da soma
               </p>
               <div className='etapa'>
                 <div className='step'>
                   <Botao id="btn-mult" ref={btnMultRef}
-                         onClick={() => atualizarAtual({etapa:'multiplicacao'})}
+                         onClick={() => {
+                           atualizarAtual({etapa:'multiplicacao', tabTotal: false});
+                           setTimeout(() => { if (btnSumRef.current) btnSumRef.current.focus(); }, 10);
+                         }}
                          disabled={atual.etapa === 'multiplicacao'}
                          style={{cursor: atual.etapa === 'multiplicacao' ? 'default' : 'pointer'}}
                          className={atual.etapa === 'multiplicacao' ? 'disable' : ''}
-                         onKeyDown={e => entradaTab(e, "frente")}
+                         onKeyDown={e => {
+                           if (e.key === "Tab" && !e.shiftKey) {
+                             e.preventDefault();
+                             entradaTab(e, "frente");
+                           }
+                         }}
                   >
                       Fazer Multiplicação
                   </Botao>
                   <Botao id="btn-sum" ref={btnSumRef}
-                         onClick={() => atualizarAtual({etapa:'soma'})}
+                         onClick={() => {
+                           atualizarAtual({etapa:'soma', tabTotal: false});
+                           setTimeout(() => { if (btnMultRef.current) btnMultRef.current.focus(); }, 10);
+                         }}
                          disabled={atual.etapa !== 'multiplicacao'}
                          style={{cursor: atual.etapa !== 'multiplicacao' ? 'default' : 'pointer'}}
                          className={atual.etapa !== 'multiplicacao' ? 'disable' : ''}
-                         onKeyDown={e => entradaTab(e, "frente")}
+                         onKeyDown={e => {
+                           if (e.key === "Tab" && !e.shiftKey) {
+                             e.preventDefault();
+                             entradaTab(e, "frente");
+                           }
+                         }}
                   >
                       Fazer Soma
                   </Botao>
@@ -279,6 +307,8 @@ export function Gelosia ({variant}) {
                           btnFimRef={btnFimRef}
                           btnVoltaRef={btnVoltaRef}
                           etapa={atual.etapa}
+                          tabTotal={atual.tabTotal}
+                          btnTabTotalRef={btnTabTotalRef}
                           btnMultRef={btnMultRef}
                           btnSumRef={btnSumRef}
                         />

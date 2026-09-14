@@ -2,7 +2,11 @@ import React from "react";
 import "./celula-estilo.css";
 import { handleChange, handleKeyDown } from "./celula-utils.js";
 
-export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado, travaBorda, registrarInput, getInputs, btnMontarRef, btnFimRef, btnVoltaRef, etapa, btnMultRef, btnSumRef }) {
+export function Celula ({
+    tipo, linha, coluna, valores, onChangeCaixa, travado, travaBorda,
+    registrarInput, getInputs, btnMontarRef, btnFimRef, btnVoltaRef,
+    etapa, tabTotal, btnTabTotalRef, btnMultRef, btnSumRef
+}) {
     const pegarValor = posicao => valores[`${linha}-${coluna}-${posicao}`] || "";
     const propsInput = (posicaoClasse, posicaoNome) => {
         const identificadorUnico = `caixa-linha-${linha}-coluna-${coluna}-posição-${posicaoNome}`;
@@ -12,19 +16,30 @@ export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado, 
         const isCima = posicaoNome.includes('-c-');
         const isBaixoOuDois = !isFator && !isResultado && !isCima && tipo !== 'esquina';
         let travadoEtapa = false;
-        if (etapa === 'multiplicacao') {
-            if (isCima || isResultado || isFator) travadoEtapa = true;
-        } else if (etapa === 'soma') {
-            if (isBaixoOuDois || isFator) travadoEtapa = true;
+        if (!tabTotal) {
+            if (etapa === 'multiplicacao') {
+                if (isCima || isResultado || isFator) {
+                    travadoEtapa = true;
+                }
+            } else if (etapa === 'soma') {
+                if (isBaixoOuDois || isFator) {
+                    travadoEtapa = true;
+                }
+            }
         }
         const readOnly = travado || (travaBorda && isFator) || travadoEtapa;
         let indexTab = (travado || travadoEtapa) ? -1 : 0;
         let diagId = null;
-        if (tipo === 'borda-esq') diagId = linha + 1;
-        else if (tipo === 'borda-inf') diagId = linha + coluna;
-        else if (!isFator && tipo !== 'esquina') {
-            if (posicaoNome.startsWith('esq')) diagId = linha + coluna;
-            else if (posicaoNome.startsWith('dir')) diagId = linha + coluna + 1;
+        if (tipo === 'borda-esq') {
+            diagId = linha + 1;
+        } else if (tipo === 'borda-inf') {
+            diagId = linha + coluna;
+        } else if (!isFator && tipo !== 'esquina') {
+            if (posicaoNome.startsWith('esq')) {
+                diagId = linha + coluna;
+            } else if (posicaoNome.startsWith('dir')) {
+                diagId = linha + coluna + 1;
+            }
         }
         let aplicaCor = false;
         if (etapa === 'multiplicacao' && isBaixoOuDois) aplicaCor = true;
@@ -81,9 +96,15 @@ export function Celula ({ tipo, linha, coluna, valores, onChangeCaixa, travado, 
                       : btnFimRef.current;
                     if (elementoDestino) elementoDestino.focus();
                 } else if (proximoIndex < 0) {
-                    if (btnSumRef.current && !btnSumRef.current.disabled) btnSumRef.current.focus();
-                    else if (btnMultRef.current && !btnMultRef.current.disabled) btnMultRef.current.focus();
-                    else if (btnMontarRef.current) btnMontarRef.current.focus();
+                    if (btnSumRef.current && !btnSumRef.current.disabled) {
+                        btnSumRef.current.focus();
+                    } else if (btnMultRef.current && !btnMultRef.current.disabled) {
+                        btnMultRef.current.focus();
+                    } else if (btnTabTotalRef.current) {
+                        btnTabTotalRef.current.focus();
+                    } else if (btnMontarRef.current) {
+                        btnMontarRef.current.focus();
+                    }
                 } else {
                     inputsDom[proximoIndex].focus();
                 }

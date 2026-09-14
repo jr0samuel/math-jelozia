@@ -83,6 +83,9 @@
 #btn-mult{
   width: 160px;
 }
+.tabTotal{
+  margin-top: -30px;
+}
 @media screen and (max-width:298px){
   .fator2 {font-size: 105%;}
   .f { margin-right: 15px; }
