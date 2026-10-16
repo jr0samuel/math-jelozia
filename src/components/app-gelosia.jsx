@@ -254,7 +254,7 @@ export function Gelosia ({variant}) {
                 <div className='step'>
                   <Botao id="btn-mult" ref={btnMultRef}
                          onClick={() => {
-                           atualizarAtual({etapa:'multiplicacao', tabTotal: false});
+                           atualizarAtual({etapa:'multiplicacao', tabTotal: false, travado: false});
                            setTimeout(() => { if (btnSumRef.current) btnSumRef.current.focus(); }, 10);
                          }}
                          disabled={atual.etapa === 'multiplicacao'}
@@ -271,7 +271,7 @@ export function Gelosia ({variant}) {
                   </Botao>
                   <Botao id="btn-sum" ref={btnSumRef}
                          onClick={() => {
-                           atualizarAtual({etapa:'soma', tabTotal: false});
+                           atualizarAtual({etapa:'soma', tabTotal: false, travado: false});
                            setTimeout(() => { if (btnMultRef.current) btnMultRef.current.focus(); }, 10);
                          }}
                          disabled={atual.etapa !== 'multiplicacao'}
