@@ -193,9 +193,9 @@ export function Gelosia ({variant}) {
                 ? `
                 Digite a quantidade de casas numéricas dos dois fatores para fazer a Gelosia, por exemplo, 258 vezes 19, digite 3 no Primeiro Fator e 2 no Segundo Fator
                 \n
-                (inclua as casas decimais, por exemplo, 10.2, digite 3)
+                (inclua as casas decimais, por exemplo, 47.5, digite 3, e depois você encaixa os decimais no produto, conforme a regra de multiplicação com decimais)
                 `
-                : "Digite a conta que você quer fazer na Gelosia, se tiver decimal, não digite a vírgula, porque a Gelosia não usa vírgula"
+                : "Digite a conta que você quer fazer na Gelosia, se tiver decimal, não digite vírgula nem ponto, porque a Gelosia não usa isso, e depois você encaixa os decimais no produto, conforme a regra de multiplicação com decimais"
                 }
               </p>
               <label className="fator fator1">
