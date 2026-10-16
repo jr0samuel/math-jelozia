@@ -3,7 +3,7 @@ import "./celula-estilo.css";
 import { handleChange, handleKeyDown } from "./celula-utils.js";
 
 export function Celula ({
-    tipo, linha, coluna, valores, onChangeCaixa, travado, travaBorda,
+    tipo, linha, coluna, f1, f2, valores, onChangeCaixa, travado, travaBorda,
     registrarInput, getInputs, btnMontarRef, btnFimRef, btnVoltaRef,
     etapa, tabTotal, btnTabTotalRef, btnMultRef, btnSumRef
 }) {
@@ -18,7 +18,7 @@ export function Celula ({
         let travadoEtapa = false;
         if (!tabTotal) {
             if (etapa === 'multiplicacao') {
-                if (isCima || isResultado || isFator) {
+                if (isCima || isResultado) {
                     travadoEtapa = true;
                 }
             } else if (etapa === 'soma') {
@@ -28,7 +28,14 @@ export function Celula ({
             }
         }
         const readOnly = travado || (travaBorda && isFator) || travadoEtapa;
-        let indexTab = (travado || travadoEtapa) ? -1 : 0;
+        let indexTab = 0;
+        if (travado) {
+            indexTab = valorAtual !== "" ? 0 : -1;
+        } else if (travadoEtapa) {
+            indexTab = -1;
+        } else {
+            indexTab = 0;
+        }
         let diagId = null;
         if (tipo === 'borda-esq') {
             diagId = linha + 1;
@@ -62,11 +69,14 @@ export function Celula ({
             if (tipo === "borda-dir") return 20000 + linha;
             if (isCimaOrdem) return 50000 - (linha * 100) - coluna - (isDireito ? 0.5 : 0);
             if (!tipo.startsWith("borda") && tipo !== "esquina") return 30000 + (linha * 100) + coluna;
-            if (tipo === "borda-inf") return 40000 - coluna;
-            if (tipo === "borda-esq") return 40100 - linha;
+            const maxColuna = f1 ? f1 - 2 : coluna;
+            const maxLinha = f2 ? f2 - 2 : linha;
+            if (tipo === "borda-inf") return 39000 + (maxColuna - coluna);
+            if (tipo === "borda-esq") return 39100 + (maxLinha - linha);
             return 99999;
         };
         const navegarCustom = e => {
+            // let inputsDom = getInputs().filter(input => input && input.tabindex !== -1);
             let inputsDom = getInputs().filter(input => input && input.getAttribute('tabindex') !== '-1');
             inputsDom.sort((a, b) => Number(a.getAttribute('data-ordem')) - Number(b.getAttribute('data-ordem')));
             const normais = inputsDom.filter(i => Number(i.getAttribute('data-ordem')) < 39000);

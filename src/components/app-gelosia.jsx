@@ -74,6 +74,7 @@ export function Gelosia ({variant}) {
         const caminhoTras = direcao === "tras" && e.shiftKey;
         if (caminhoFrente || caminhoTras) {
           let inputsDom = Array.from(inputsMapRef.current.values())
+            // .filter(input => input && input.tabIndex !== -1);
             .filter(input => input && input.getAttribute('tabindex') !== '-1');
           if (inputsDom.length > 0) {
             e.preventDefault();
@@ -193,9 +194,9 @@ export function Gelosia ({variant}) {
                 ? `
                 Digite a quantidade de casas numéricas dos dois fatores para fazer a Gelosia, por exemplo, 258 vezes 19, digite 3 no Primeiro Fator e 2 no Segundo Fator
                 \n
-                (inclua as casas decimais, por exemplo, 47.5, digite 3, e depois você encaixa os decimais no produto, conforme a regra de multiplicação com decimais)
+                (inclua as casas decimais, por exemplo, 47.5, digite 3)
                 `
-                : "Digite a conta que você quer fazer na Gelosia, se tiver decimal, não digite vírgula nem ponto, porque a Gelosia não usa isso, e depois você encaixa os decimais no produto, conforme a regra de multiplicação com decimais"
+                : "Digite a conta que você quer fazer na Gelosia, se tiver decimal, não digite vírgula nem ponto, porque a Gelosia não usa vírgula nem ponto"
                 }
               </p>
               <label className="fator fator1">
@@ -234,8 +235,8 @@ export function Gelosia ({variant}) {
           <>
             <div className='app-jelozia'>
               <p className="paragrafo">
-                Se você estiver usando computador, <br/>o Tab fará o caminho exato do cálculo ao longo da gelosia
-                <br />e também pode clicar em Tab Completo após clicar em Multiplicação ou Soma
+                Se você estiver usando computador, <br/> o Tab fará o caminho exato do cálculo ao longo da gelosia
+                <br /> pode clicar em Tab Completo após Fazer Multiplicação ou Soma
               </p>
               <div className='tabTotal'>
                 <Botao ref={btnTabTotalRef} id="btn-tabTotal"
@@ -245,7 +246,9 @@ export function Gelosia ({variant}) {
                 </Botao>
               </div>
               <p>
-                Se você clicar em Fazer Multiplicação ou Soma, <br/>o Tab seguirá o caminho específico da multiplicação ou da soma
+                Se você clicar em Fazer Multiplicação ou Soma, <br/>o Tab seguirá o caminho específico da multiplicação ou da soma com cores <br/>
+                pode clicar no celular também para mostrar as cores <br/>
+                Tab Completo não remove as cores
               </p>
               <div className='etapa'>
                 <div className='step'>
@@ -283,8 +286,8 @@ export function Gelosia ({variant}) {
                   >
                       Fazer Soma
                   </Botao>
-                </div>
-                <p className='paragrafo'>primeiro multiplicação, depois soma</p>
+                </div>{/* <br/> */}
+                {/* <p className='paragrafo'>primeiro multiplicação, depois soma</p> */}
               </div>
               <div className="jelozia"
                   style={{gridTemplateColumns:`repeat(${atual.f1_2}, 100px)`}}>
@@ -297,6 +300,8 @@ export function Gelosia ({variant}) {
                           tipo={tipo}
                           linha={linhaIndex}
                           coluna={colunaIndex}
+                          f1={atual.f1_2}
+                          f2={atual.f2_2}
                           valores={atual.valoresCaixas}
                           onChangeCaixa={handleCaixa}
                           travado={atual.travado}
@@ -334,7 +339,7 @@ export function Gelosia ({variant}) {
                 <div className="grupo volta">
                   <Botao ref={btnVoltaRef}
                     id="btn-volta"
-                    onClick={() => atualizarAtual({ travado: false })}
+                    onClick={() => atualizarAtual({ travado: false, tabTotal: true })}
                     onKeyDown={e => entradaTab(e, "tras")}
                     tabIndex={!atual.travado ? -1 : 0}
                     className={`${!atual.travado ? 'travado-nao-ativo disable' : 'travado-ativo'}`}
