@@ -45,7 +45,7 @@
     border: none;
   }
 }
-.botoes, span{
+.botoes, span, p, br{
   user-select: none;
 }
 .clicou{
@@ -74,6 +74,7 @@
   flex-direction: column;
   align-items: center;
   margin: 1px 0;
+  user-select: none;
 }
 .step {
   display: flex;
@@ -86,6 +87,7 @@
 }
 .tabTotal{
   margin-top: -30px;
+  user-select: none;
 }
 @media screen and (max-width:298px){
   .fator2 {font-size: 105%;}
