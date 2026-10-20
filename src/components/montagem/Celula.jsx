@@ -4,8 +4,8 @@ import { handleChange, handleKeyDown } from "./celula-utils.js";
 
 export function Celula ({
     tipo, linha, coluna, f1, f2, valores, onChangeCaixa, travado, travaBorda,
-    registrarInput, getInputs, btnMontarRef, btnFimRef, btnVoltaRef,
-    etapa, tabTotal, btnTabTotalRef, btnMultRef, btnSumRef
+    registrarInput, getInputs,
+    etapaTab, etapaCor, btnFimRef, btnVoltaRef, btnMultRef, btnSumRef
 }) {
     const pegarValor = posicao => valores[`${linha}-${coluna}-${posicao}`] || "";
     const propsInput = (posicaoClasse, posicaoNome) => {
@@ -15,23 +15,21 @@ export function Celula ({
         const isResultado = tipo === 'borda-esq' || tipo === 'borda-inf';
         const isCima = posicaoNome.includes('-c-');
         const isBaixoOuDois = !isFator && !isResultado && !isCima && tipo !== 'esquina';
-        let travadoEtapa = false;
-        if (!tabTotal) {
-            if (etapa === 'multiplicacao') {
-                if (isCima || isResultado) {
-                    travadoEtapa = true;
-                }
-            } else if (etapa === 'soma') {
-                if (isBaixoOuDois || isFator) {
-                    travadoEtapa = true;
-                }
+        let travadoTab = false;
+        if (etapaTab === 'multiplicacao') {
+            if (isCima || isResultado) {
+                travadoTab = true;
+            }
+        } else if (etapaTab === 'soma') {
+            if (isBaixoOuDois || isFator) {
+                travadoTab = true;
             }
         }
-        const readOnly = travado || (travaBorda && isFator) || travadoEtapa;
+        const readOnly = travado || (travaBorda && isFator);
         let indexTab = 0;
         if (travado) {
             indexTab = valorAtual !== "" ? 0 : -1;
-        } else if (travadoEtapa) {
+        } else if (travadoTab) {
             indexTab = -1;
         } else {
             indexTab = 0;
@@ -49,8 +47,8 @@ export function Celula ({
             }
         }
         let aplicaCor = false;
-        if (etapa === 'multiplicacao' && isBaixoOuDois) aplicaCor = true;
-        if (etapa === 'soma' && (isBaixoOuDois || isCima || isResultado)) aplicaCor = true;
+        if (etapaCor === 'multiplicacao' && isBaixoOuDois) aplicaCor = true;
+        if (etapaCor === 'soma' && (isBaixoOuDois || isCima || isResultado)) aplicaCor = true;
         const paletaCores = [
             "#1E293B",
             "#3730A3",
@@ -106,14 +104,10 @@ export function Celula ({
                       : btnFimRef.current;
                     if (elementoDestino) elementoDestino.focus();
                 } else if (proximoIndex < 0) {
-                    if (btnSumRef.current && !btnSumRef.current.disabled) {
+                    if (btnSumRef.current) {
                         btnSumRef.current.focus();
-                    } else if (btnMultRef.current && !btnMultRef.current.disabled) {
+                    } else if (btnMultRef.current) {
                         btnMultRef.current.focus();
-                    } else if (btnTabTotalRef.current) {
-                        btnTabTotalRef.current.focus();
-                    } else if (btnMontarRef.current) {
-                        btnMontarRef.current.focus();
                     }
                 } else {
                     inputsDom[proximoIndex].focus();
