@@ -101,6 +101,13 @@ export function Gelosia ({variant}) {
             } else {
               inputsDom[inputsDom.length - 1].focus();
             }
+          } else {
+            e.preventDefault();
+            if (caminhoFrente) {
+              if (btnVoltaRef.current) btnVoltaRef.current.focus();
+            } else if (caminhoTras) {
+              if (btnSumRef.current) btnSumRef.current.focus();
+            }
           }
         }
       }
