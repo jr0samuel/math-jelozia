@@ -255,14 +255,14 @@ export function Gelosia ({variant}) {
               </div>
               <p>
                 Ao clicar em Fazer Multiplicação ou Soma, <br/>
-                o Tab seguirá o caminho específico da multiplicação ou da soma com cores <br/>
+                o Tab seguirá o caminho específico da multiplicação ou soma com cores <br/>
                 pode clicar no celular também para mostrar as cores
               </p>
               <div className='etapa'>
                 <div className='step'>
                   <Botao id="btn-mult" ref={btnMultRef}
                          onClick={() => {
-                           atualizarAtual({etapaTab: 'multiplicacao', etapaCor: 'multiplicacao'});
+                           atualizarAtual({etapaTab: 'multiplicacao', etapaCor: 'multiplicacao', travado: false});
                            setTimeout(() => { if (btnSumRef.current) btnSumRef.current.focus(); }, 10);
                          }}
                   >
@@ -270,7 +270,7 @@ export function Gelosia ({variant}) {
                   </Botao>
                   <Botao id="btn-sum" ref={btnSumRef}
                          onClick={() => {
-                           atualizarAtual({etapaTab: 'soma', etapaCor: 'soma'});
+                           atualizarAtual({etapaTab: 'soma', etapaCor: 'soma', travado: false});
                            setTimeout(() => { if (btnMultRef.current) btnMultRef.current.focus(); }, 10);
                          }}
                          onKeyDown={e => {
